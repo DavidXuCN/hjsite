@@ -72,10 +72,10 @@ LOGGING = {
             'class': 'logging.FileHandler',
             'filename': '/home/hjsite_debug.log',
         },
-       'mail_admins': {
+        'mail_admins': {
             'level': 'ERROR',
             'class': 'django.utils.log.AdminEmailHandler',
-        }
+        },
     },
     'loggers': {
         'django': {
