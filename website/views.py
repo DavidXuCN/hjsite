@@ -165,4 +165,5 @@ def hot_melt_glue_equipment(request):
 def squeeze_film_line_equipment(request):
 	return render(request, 'website/plastic_extrusion_machinery/squeeze_film_line_equipment.html')
 
-
+def indexcn(request):
+	return render(request, 'websitecn/indexcn.html') 

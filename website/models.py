@@ -10,17 +10,29 @@ class IMG (models.Model):
 	def __str__(self):
 		return self.name
 
+	class Meta:
+		verbose_name = '图片'
+		verbose_name_plural = verbose_name
+
 class Category (models.Model):
 	name = models.CharField(max_length=80)
 
 	def __str__(self):
 		return self.name
 
+	class Meta:
+		verbose_name = '分类'
+		verbose_name_plural = verbose_name
+
 class Tag (models.Model):
 	name = models.CharField(max_length=80)
 
 	def __str__(self):
 		return self.name
+
+	class Meta:
+		verbose_name = '标签'
+		verbose_name_plural = verbose_name
 
 class Post (models.Model):	
 	title = models.CharField(max_length=80)
@@ -36,6 +48,10 @@ class Post (models.Model):
 	
 	def __str__(self):
 		return self.title
+
+	class Meta:
+		verbose_name = '文章'
+		verbose_name_plural = verbose_name
 
 	
 

@@ -51,6 +51,9 @@ urlpatterns = [
     path('plastic_extrusion_machinery/plastic_seat_tube_equipment', views.plastic_seat_tube_equipment, name = 'website_plastic_seat_tube_equipment'),
     path('plastic_extrusion_machinery/plastic_sealing_equipment', views.plastic_sealing_equipment, name = 'website_plastic_sealing_equipment'),
     path('plastic_extrusion_machinery/hot_melt_glue_equipment', views.hot_melt_glue_equipment, name = 'website_hot_melt_glue_equipment'),
-    path('plastic_extrusion_machinery/squeeze_film_line_equipment', views.squeeze_film_line_equipment, name = 'website_squeeze_film_line_equipment')
+    path('plastic_extrusion_machinery/squeeze_film_line_equipment', views.squeeze_film_line_equipment, name = 'website_squeeze_film_line_equipment'),
+    #中文版
+	path('indexcn', views.indexcn, name = 'websitecn_indexcn'),
 ]
+    
 	
