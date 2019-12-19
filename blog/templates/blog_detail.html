@@ -1,0 +1,501 @@
+{% extends 'base_blog.html' %}
+
+{% block title %} 
+  Blog |  {{ blog.title }}  
+{% endblock %} 
+
+{% load comment_tags %}
+{% load likes_tags %}
+
+{% block Heading/Breadcrumbs %} 
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">Blog content</h1>
+    <!-- <h1 class="mt-4 mb-3">Blog: {{ blog.title }}
+        <small>by
+            <a href="#">Huijia</a>
+        </small>
+    </h1> -->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a href="/blog/blog_home">Blog Home</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a href="/blog/blog_list">Blog List</a>
+        </li>        
+        <li class="breadcrumb-item "> Blog </li>
+    </ol>
+{% endblock %} 
+
+
+{% block content %} 
+    <div class="row">
+        <!-- Post Content Column -->
+        <div class="col-lg-9">                               
+            <!-- Preview Image -->
+            <img class="img-fluid rounded" src="{{ blog.img.img.url }}" alt="">
+            <!-- <img class="img-fluid rounded" src="http://placehold.it/900x300" alt=""> -->
+            <!-- {{ MEDIA_URL }}{{ post.img}} -->
+            
+
+            <!-- Date/Time -->
+            <div class="card card-header mb-4 pb-0 text-muted">
+                <p>Author: <a href="#">{{ blog.author}}</a>
+                    &nbsp;CAT:<a href="{% url 'blog_category' blog.category.pk %}"> {{ blog.category }} </a>
+                    &nbsp;Ptime: {{ blog.publish_time | date:"d/m/Y H:i:s"}}
+                    <!-- &nbsp;Mtime: {{ blog.last_updated_time | date:"d/m/Y"}} -->
+                    &nbsp;Read ({{ blog.get_read_num }})
+                    &nbsp;Comment ({% get_comment_count blog %})                      
+                </p>                 
+            </div>  
+            <!-- <p>Posted on {{ blog.publish_time | date:"d/m/Y G:i:s" }} by
+                <a href="#">{{ blog.author}}</a>
+                 Modified on {{ blog.last_updated_time | date:"d/m/Y G:i:s" }}
+                Category:{{ blog.category }}                        
+            </p>
+            <hr>  -->  
+
+            <h2 class="text-center">{{ blog.title }}</h2>   
+
+            <!-- Post Content -->
+            <div class="ml-0 mt-4" style="width:;word-break: break-all;">{{ blog.content | safe }}</div>
+            <div class="like" onclick="likeChange(this, '{% get_content_type blog %}', {{ blog.pk }})">
+                <span class="glyphicon glyphicon-thumbs-up {% get_like_status blog %} mt-4 ml-4"></span>
+                <span class="liked-num">{% get_like_count blog %}</span>
+                <span>like</span>
+            </div>
+            <!-- <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum minus inventore?</p>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.</p>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, doloribus, dolorem iusto blanditiis unde eius illum consequuntur neque dicta incidunt ullam ea hic porro optio ratione repellat perspiciatis. Enim, iure!</p>
+
+            <blockquote class="blockquote">
+                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                <footer class="blockquote-footer">Someone famous in
+                    <cite title="Source Title">Source Title</cite>
+                </footer>
+            </blockquote>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, nostrum, aliquid, animi, ut quas placeat totam sunt tempora commodi nihil ullam alias modi dicta saepe minima ab quo voluptatem obcaecati?</p>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dolor quis. Sunt, ut, explicabo, aliquam tenetur ratione tempore quidem voluptates cupiditate voluptas illo saepe quaerat numquam recusandae? Qui, necessitatibus, est!</p> -->
+
+            <hr>
+
+            <div class="row mt-4 mb-4">
+                <div class="col-md-6">
+                    <h5>&larr; Previous blog: 
+                        {% if previous_blog %}
+                            <a href="{% url 'blog_detail' previous_blog.pk %}">{{ previous_blog.title | truncatechars:15 }}</a>
+                        {% else %}
+                            No more
+                        {% endif %}
+                    </h5>
+                </div>
+
+                <div class="col-md-6">
+                    <h5 class="float-right">Next blog: 
+                        {% if next_blog %}
+                            <a href="{% url 'blog_detail' next_blog.pk %}">{{ next_blog.title | truncatechars:15 }} </a> &rarr;
+                        {% else %}
+                            No more
+                        {% endif %}
+                    </h5>
+                </div>
+            </div>
+
+            <!-- Comments Form -->
+            <div class="card my-4">
+                <h5 class="card-header">Leave a Comment:</h5>
+                <div class="card-body">
+                    <p class="mb-2" >
+                        {% if user.is_authenticated %}
+                            <form id="comment_form" action="{% url 'update_comment' %}" method="POST" style="overflow:hidden">
+                                <label>Dear {{ user.get_nickname_or_username }}, welcome to comment~</label>
+                                <div id="reply_content_container" style="display: none;">
+                                    <p id="reply_title">Reply:</p>
+                                    <div id="reply_content"></div>
+                                </div>
+                                {% csrf_token %}
+                                {% get_comment_form blog as comment_form %}
+                                {% for field in comment_form %}
+                                    {{ field }}
+                                {% endfor %}
+                                <span id="comment_error" class="text-danger float-left"></span>
+                                <!-- <div class="form-group">
+                                    
+                                    <textarea class="form-control" id="comment_text" name="text" rows="3"></textarea>
+                                </div> -->
+                                <!-- <input type="hidden" name="object_id" value="{{ blog.pk }}">
+                                <input type="hidden" name="content_type" value="blog"> -->
+
+                                <input type="submit" class="btn btn-primary bg-info float-right mt-2" value="Submit">
+                            </form>
+                        {% else %}
+                            You are not logged in yet, Comment after logging in~
+                            <a class="btn btn-primary bg-info" href="{% url 'login' %}?from={{ request.get_full_path }}">Login</a>
+                            <span> or </span>
+                            <a class="btn btn-warning" href="{% url 'register' %}?from={{ request.get_full_path }}">Register</a>
+                            <!-- <a href="{% url 'login' %}">log in</a>
+                            <form action="{% url 'login' %}" method="POST">
+                                {% csrf_token %}
+                                <span>Name:<span>
+                                <input type="text" name="username">
+                                <span>Password:<span>
+                                <input type="password" name="password"> 
+                                <input type="submit" value="Login">
+                            </form> -->
+                        {% endif %}
+                    </p>
+                        
+                    <!-- <div class="form-group mt-4" >
+                        <textarea class="form-control" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary bg-info">Submit</button> -->
+                </div>
+            </div>
+
+            <!-- Single Comment -->
+            <h5 class="card-header mb-4">Comment list:</h5>
+            <div id="comment_list">
+                {% get_comment_list blog as comments %}
+                {% for comment in comments %}
+                    <div id="root_{{ comment.pk }}" class="media mb-2">
+                        <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                        <div class="media-body">
+                            <h5 class="mt-0">{{ comment.user.get_nickname_or_username }}&nbsp;&nbsp;<small class="text-muted">({{ comment.comment_time | date:"d/m/Y H:i:s"}})</small></h5>
+                            <div id="comment_{{ comment.pk }}">
+                                {{ comment.text | safe }}
+                            </div>
+                            <div class="like" onclick="likeChange(this, '{% get_content_type comment %}', {{ comment.pk }})">
+                                <span class="glyphicon glyphicon-thumbs-up {% get_like_status comment %}"></span>
+                                <span class="liked-num">{% get_like_count comment %}</span>
+                            </div>
+                            <!-- <a class="glyphicon glyphicon-comment text-muted" href="javascript:reply({{ comment.pk }});"></a> -->
+                            <a class="fa fa-comment-o" href="javascript:reply({{ comment.pk }});"></a>
+
+                            {% for reply in comment.root_comment.all %}
+                                <div class="media mt-4 mb-2">
+                                    <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                                    <div class="media-body">
+                                        <h5 class="mt-0">{{ reply.user.get_nickname_or_username }}&nbsp;&nbsp;<small class="text-muted">({{ reply.comment_time | date:"d/m/Y H:i:s"}})</small>&nbsp;&nbsp;<small>Reply to: {{ reply.reply_to.get_nickname_or_username }}</small></h5>
+                                        <div id="comment_{{ reply.pk }}">
+                                            {{ reply.text | safe }}
+                                        </div>
+                                        <div class="like" onclick="likeChange(this, '{% get_content_type reply %}', {{ reply.pk }})">
+                                            <span class="glyphicon glyphicon-thumbs-up {% get_like_status reply %}"></span>
+                                            <span class="liked-num">{% get_like_count reply %}</span>
+                                        </div>
+                                        <a class="fa fa-comment-o" href="javascript:reply({{ reply.pk }});"></a>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <hr>
+                {% empty %}
+                    <span id="no_comment" class="mb-4">No comment!</span>
+                {% endfor %}
+            </div>
+
+            <!-- Comment with nested comments -->
+            <!-- <div class="media mb-4">
+                <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                <div class="media-body">
+                    <h5 class="mt-0">Commenter Name</h5>
+                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+
+                    <div class="media mt-4">
+                        <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                        <div class="media-body">
+                            <h5 class="mt-0">Commenter Name</h5>
+                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                        </div>
+                    </div>
+
+                    <div class="media mt-4">
+                        <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                        <div class="media-body">
+                            <h5 class="mt-0">Commenter Name</h5>
+                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                        </div>
+                    </div>
+
+                </div>
+            </div> -->
+            <!-- Modal -->
+            <div class="modal fade" id="login_modal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-sm" role="document">
+                    <div class="modal-content">
+                        <form id="login_modal_form" action="" method="POST">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Login</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            </div>
+                            <div class="modal-body">
+                                    {% csrf_token %}
+                                    {% for field in login_modal_form %}
+                                        <div class="form-group">
+                                            <!-- <div class="form-label-group"> -->
+                                            <label for="{{ field.id_for_lable }}">{{ field.label }}</label>
+                                            {{ field }}
+                                            <!-- </div> -->
+                                        </div>
+                                    {% endfor %}
+                                    <span id="login_modal_tip" class="text-danger"></span>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary bg-info">Login</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}       
+
+{% block sidebar_widgets_column %}
+<!-- Sidebar Widgets Column -->
+<div class="col-md-3">
+
+    <!-- Search Widget -->
+    <div class="card mb-4">
+        <h5 class="card-header">Search</h5>
+        <div class="card-body">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
+                    <button class="btn btn-secondary" type="button">Go!</button>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Categories Widget -->
+    <div class="card my-4">
+        <h5 class="card-header">Categories</h5>
+        <div class="card-body">
+            <div class="row">
+                <!-- <div class="col-lg-6">
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <a href="#">Placemat</a>
+                        </li>
+                        <li>
+                            <a href="#">Table Runner</a>
+                        </li>
+                        <li>
+                            <a href="#">Doormat</a>
+                        </li>
+                    </ul>
+                </div> -->
+                <div class="col-lg-12">
+                    <ul class="list-unstyled mb-0">
+                        {% for category in categorys%}
+                        <li>
+                            <a href="{% url 'blog_category' category.pk %}">
+                                {{ category.name }} ({{ category.blog_count }})
+                            </a>
+                        </li>
+                        {% empty %}
+                        <li>
+                            <a href="#">No Category!</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Side Widget -->
+    <!-- <div class="card my-4">
+        <h5 class="card-header">Side Widget</h5>
+        <div class="card-body">
+            Taizhou huijia I & E Co. Ltd. welcome to you!
+        </div>
+    </div> -->
+
+    <!-- Date of filling Widget -->
+    <div class="card my-4">
+        <h5 class="card-header">Date of Filling</h5>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-6">
+                    <ul class="list-unstyled mb-0">
+                        {% for blog_date, blog_count in blog_dates.items %}
+                            <li>
+                                <a href="{% url 'blogs_with_date' blog_date.year blog_date.month %}">
+                                    {{ blog_date | date:"Y/m" }} ({{ blog_count }})
+                                </a>
+                            </li>
+                        {% empty %}
+                            <li>
+                                <span>No date of filling !</span>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block script_extends %}
+    <script type="text/javascript">
+        String.prototype.format = function(){
+            var str = this;
+            for (var i = 0; i < arguments.length; i++) {
+                var str = str.replace(new RegExp('\\{' + i + '\\}', 'g'), arguments[i])
+                };
+                return str;    
+        }
+        function reply(reply_comment_id){
+            // 设置值
+            $('#reply_comment_id').val(reply_comment_id);
+            var html = $("#comment_" + reply_comment_id).html();
+            $('#reply_content').html(html);
+            $('#reply_content_container').show();
+
+            $('html').animate({scrollTop: $('#comment_form').offset().top - 60}, 300, function(){
+                CKEDITOR.instances['id_text'].focus();   
+            });
+        }
+        $("#comment_form").submit(function(){
+            // 判断是否为空
+            $("#comment_error").text('');
+            if(CKEDITOR.instances["id_text"].document.getBody().getText().trim()==''){
+                $("#comment_error").text('This field is required.'); 
+                return false;   
+            }
+
+            // 更新数据到textarea
+            CKEDITOR.instances['id_text'].updateElement();
+
+            // 异步提交
+            $.ajax({
+                url: "{% url 'update_comment' %}",
+                type: 'POST',
+                data: $(this).serialize(),
+                cache: false,
+                success: function(data){
+                    console.log(data);
+                    if(data['status']=="SUCCESS"){
+                        if($('#reply_comment_id').val()=='0'){
+                            // 插入评论
+                            // var comment_html = '<div id="root_'+ data['pk'] +'" class="media mb-2"><img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt=""><div class="media-body"><h5 class="mt-0">' + data['username'] + '&nbsp;&nbsp;<small class="text-muted">(' + data['comment_time'] + ')</small></h5><div id="comment_' + data['pk'] + '">' + data['text'] + '</div><a href="javascript:reply(' + data['pk'] + ');"> Reply </a></div></div><hr>';
+
+                            var comment_html = '<div id="root_{0}" class="media mb-2">' +
+                                    '<img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">' +
+                                    '<div class="media-body">' +
+                                        '<h5 class="mt-0">{1}&nbsp;&nbsp;<small class="text-muted">({2})</small></h5>' +
+                                        '<div id="comment_{0}">{3}</div>' +
+                                        '<div class="like" onclick="likeChange(this, \'{4}\', {0})">' +
+                                            '<span class="glyphicon glyphicon-thumbs-up"></span> ' +
+                                            '<span class="liked-num">0</span>' +
+                                        '</div>' +
+                                        '<a class="fa fa-comment-o" href="javascript:reply({0});"></a>' +
+                                    '</div>' +
+                                '</div>' +
+                                '<hr>';
+                            comment_html = comment_html.format(data['pk'], data['username'], data['comment_time'], data['text'], data['content_type']);
+                            $("#comment_list").prepend(comment_html);
+
+                        }else{
+                            // 插入回复
+                            // var reply_html = '<div class="media mt-4 mb-2"><img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt=""><div class="media-body"><h5 class="mt-0">' + data['username'] + '&nbsp;&nbsp;<small class="text-muted">(' + data['comment_time'] + ')</small>&nbsp;&nbsp;<small>Reply to: ' + data['reply_to'] + '</small></h5><div id="comment_' + data['pk'] + '">' + data['text'] + '</div><a href="javascript:reply(' + data['pk'] + ');"> Reply </a></div></div>';
+
+                            var reply_html = '<div class="media mt-4 mb-2">' +
+                                    '<img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">' +
+                                    '<div class="media-body">' +
+                                        '<h5 class="mt-0">{1}&nbsp;&nbsp;<small class="text-muted">({2})</small>&nbsp;&nbsp;<small>Reply to: {3}</small></h5>' +
+                                        '<div id="comment_{0}">{4}</div>' +
+                                        '<div class="like" onclick="likeChange(this, \'{5}\', {0})">' +
+                                            '<span class="glyphicon glyphicon-thumbs-up"></span> ' +
+                                            '<span class="liked-num">0</span>' +
+                                        '</div>' +
+                                        '<a class="fa fa-comment-o" href="javascript:reply({0});"></a>' +
+                                    '</div>' +
+                                '</div>';
+                            reply_html = reply_html.format(data['pk'], data['username'], data['comment_time'], data['reply_to'], data['text'], data['content_type']);
+                            $("#root_" + data['root_pk']).append(reply_html);
+                        }
+
+                        // 清空编辑框的内容
+                        CKEDITOR.instances['id_text'].setData('');
+                        $('#reply_content_container').hide();
+                        $('#reply_comment_id').val('0');
+                        $('#no_comment').remove();
+                        $("#comment_error").text('Comment success!');
+                    }else{
+                        // 显示错误信息
+                        $("#comment_error").text(data['message']);
+                    }
+                },
+                error: function(xhr){
+                    console.log(xhr);
+                }
+            });
+            return false;
+        });
+        function likeChange(obj, content_type, object_id){
+            var is_like = obj.getElementsByClassName('active').length == 0
+            $.ajax({
+                url: "{% url 'like_change' %}",
+                type:'GET',
+                data: {
+                    content_type: content_type,
+                    object_id: object_id,
+                    is_like: is_like
+                },
+                cache: false,
+                success: function(data){
+                    console.log(data)
+                    if(data['status']=='SUCCESS'){
+                        // 更新点赞状态
+                        var element = $(obj.getElementsByClassName('glyphicon'));
+                        if(is_like){
+                            element.addClass('active');
+                        }else{
+                            element.removeClass('active');
+                        }
+                        // 更新点赞数量
+                        var liked_num = $(obj.getElementsByClassName('liked-num'));
+                        liked_num.text(data['liked_num']);
+                    }else{
+                        if(data['code']==400){
+                            $('#login_modal').modal('show');
+                        }else{
+                            alert(data['message']);
+                        }
+                    }
+                },
+                error: function(xhr){
+                    console.log(xhr)
+                }
+            });
+        }
+        $("#login_modal_form").submit(function(event){
+            event.preventDefault();
+            $.ajax({
+                url: '{% url "login_for_modal" %}',
+                type: 'POST',
+                data: $(this).serialize(),
+                cache: false,
+                success: function(data){
+                    if(data['status']=='SUCCESS'){
+                        window.location.reload();
+                    }else{
+                        $('#login_modal_tip').text('Incorrect user name or password');
+                    }
+                }
+            });   
+        });
+    </script>
+{% endblock %} 

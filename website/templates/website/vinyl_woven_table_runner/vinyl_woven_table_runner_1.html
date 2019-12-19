@@ -1,314 +1,178 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base_en.html' %}
 {% load static %}
 
-  <head>
+{% block title %} Product | table runner {% endblock %}
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+{% block nav_product_active %} active {% endblock %}
 
-    <title>Huijia I & E Co.</title>
+{% block nav_Category_active %} active {% endblock %}
 
-    <!-- Bootstrap core CSS -->
-    <link href="{% static 'website/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+{% block Heading/Breadcrumbs %}
 
-    <!-- Custom styles for this template -->
-    <link href="{% static 'website/css/modern-business.css' %}" rel="stylesheet">
-    <link rel="icon" href = "{% static 'website/img/icon.ico' %}" type = "image/x-icon" />
-
-  </head>
-
-  <body>
-
-    <!-- Navigation -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-info fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="/"><img src="{% static 'website/img/icon2c.png' %}" > Taizhou Huijia Imp. & Exp. Co., Ltd.</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="/">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/about">About</a>
-            </li>
-            <li class="nav-item dropdown">              
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownProductCategory1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Product Category
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProductCategory1">
-                <div class="dropdown-submenu">
-                  <a class="dropdown-item" tabindex="-1" href="javascript:;">Plastic daily necessities series</a>
-                  <div class="dropdown-menu dropdown-" aria-labelledby="navbarDropdownProductCategory2">
-                    <a class="dropdown-item " href="/vinyl_woven_placemat/classified_style_1">Vinyl Woven Place Mat</a>
-                    <a class="dropdown-item " href="/vinyl_woven_table_runner/vinyl_woven_table_runner_1">Vinyl Woven Table Runner</a>
-                    <a class="dropdown-item " href="/vinyl_tufted_doormat/vinyl_tufted_doormat_1">Vinyl Tufted Doormat</a>
-                    <a class="dropdown-item " href="/plastic_extrusion_machinery/machine_profile">Plastic Injection Products</a>
-                  </div>
-                </div>                
-                <a class="dropdown-item" href="/car_carpet/car_carpet_1">Car-carpet Series</a>  
-                <a class="dropdown-item" href="/plastic_extrusion_machinery/machine_profile">Plastic Extrusion Machinery Series</a>                           
-              </div>
-            </li>        
-            <li class="nav-item dropdown active">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Product
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio1">                
-                <div class="dropdown-submenu">
-                  <a class="dropdown-item" tabindex="-1" href="javascript:; ">Vinyl Woven Place Mat</a>
-                  <div class="dropdown-menu dropdown-" aria-labelledby="navbarDropdownPortfolio2">
-                    <a class="dropdown-item " href="/vinyl_woven_placemat/classified_style_1">Classified Style</a>
-                    <a class="dropdown-item " href="/vinyl_woven_placemat/regular_pattern_1">Regular Pattern</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item " href="/vinyl_woven_placemat/placemat_profile" >Place Mat Profile</a>
-                  </div>
-                </div> 
-                <!-- <a class="dropdown-item" href="portfolio-1-col.html">1 Column Portfolio</a> -->    
-                <div class="dropdown-submenu">
-                  <a class="dropdown-item" tabindex="-1" href="javascript:;">Vinyl Woven Table Runner</a>
-                  <div class="dropdown-menu dropdown-" aria-labelledby="navbarDropdownPortfolio3">
-                    <a class="dropdown-item " href="/vinyl_woven_table_runner/vinyl_woven_table_runner_1" >Table Runner Style</a>
-                    <a class="dropdown-item " href="#" >Table Runner Profile</a>                    
-                  </div>
-                </div>                                   
-                <!-- <a class="dropdown-item" href="portfolio-2-col.html">Vinyl Woven Table Runner</a>  -->                 
-                <!-- <a class="dropdown-item" href="/vinyl_tufted_doormat/vinyl_tufted_doormat_1">Vinyl Tufted Doormat</a>  -->  
-                <div class="dropdown-submenu">
-                  <a class="dropdown-item" tabindex="-1" href="javascript:;">Vinyl Tufted Doormat</a>
-                  <div class="dropdown-menu dropdown-" aria-labelledby="navbarDropdownPortfolio4">
-                    <a class="dropdown-item " href="/vinyl_tufted_doormat/vinyl_tufted_doormat_1" >Vinyl Tufted Doormat Style</a>
-                    <a class="dropdown-item " href="#" >Doormat Profile</a>                    
-                  </div>
-                </div>      
-                <a class="dropdown-item" href="#">Plastic Injection Products</a> 
-                <!-- <a class="dropdown-item" href="portfolio-4-col.html">Vinyl Tufted Car-carpet</a>  -->
-                <div class="dropdown-submenu">
-                  <a class="dropdown-item" tabindex="-1" href="javascript:;">Vinyl Tufted Car-carpet</a>
-                  <div class="dropdown-menu dropdown-" aria-labelledby="navbarDropdownPortfolio6">
-                    <a class="dropdown-item " href="/car_carpet/car_carpet_1" >Car Carpet Style</a>
-                    <a class="dropdown-item " href="#" >Car Carpet Profile</a>                    
-                  </div>
-                </div>  
-
-                <!-- <a class="dropdown-item" href="/plastic_extrusion_machinery/machine_profile">Plastic Extrusion Machinery</a>  -->
-                <div class="dropdown-submenu">
-                  <a class="dropdown-item" tabindex="-1" href="javascript:;">Plastic Extrusion Machinery</a>
-                  <div class="dropdown-menu dropdown-" aria-labelledby="navbarDropdownPortfolio7">
-                    <a class="dropdown-item " href="/plastic_extrusion_machinery/eletronic_wire_equipment">Eletronic Wire Equipment With Double Automatic Winding Device</a>
-                    <a class="dropdown-item " href="/plastic_extrusion_machinery/wire_cable_sheath_line_equipment">Wire and Cable and Sheath Line Equipment</a>
-                    <a class="dropdown-item " href="/plastic_extrusion_machinery/pet_wiredrawing_machine_equipment">PET wiredrawing Machine Equipment</a>
-                    <a class="dropdown-item " href="/plastic_extrusion_machinery/pp_brush_wiredrawing_machine_equipment">PP Brush Wire Drawing Machine Equipment</a>
-                    <a class="dropdown-item " href="/plastic_extrusion_machinery/plastic_round_monofilament_silk_wiredrawing_machine">Plastic Round silk Monofilament Wire Drawing Machine</a>
-                    <a class="dropdown-item " href="/plastic_extrusion_machinery/manager_lin_coating_unit">Manager Lin Coating Unit</a>
-                    <a class="dropdown-item " href="/plastic_extrusion_machinery/plastic_seat_tube_equipment">Plastic Seat Tube Equipment</a>
-                    <a class="dropdown-item " href="/plastic_extrusion_machinery/plastic_sealing_equipment">Plastic Sealing Equipment</a>
-                    <a class="dropdown-item " href="/plastic_extrusion_machinery/hot_melt_glue_equipment">Hot Melt Glue Equipment</a>
-                    <a class="dropdown-item " href="/plastic_extrusion_machinery/squeeze_film_line_equipment">Squeeze Film Line Equipment</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item " href="/plastic_extrusion_machinery/machine_profile">Machine Profile</a>
-                  </div>
-                </div>                               
-              </div>                                 
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/blog">Blog</a>              
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/contact">Contact</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <!-- Page Content -->
-    <div class="container">
-
-      <!-- Page Heading/Breadcrumbs -->
-      <h1 class="mt-4 mb-3">Vinyl Woven Table Runner
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">Vinyl Woven Table Runner
         <small>Table Runner Style</small>
-      </h1>
+    </h1>
 
-      <ol class="breadcrumb">
+    <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="index.html">Home</a>
-        </li>       
+            <a href="index.html">Home</a>
+        </li>             
         <li class="breadcrumb-item active">
-           <a >Vinyl Woven table runner</a>
+             <a >Vinyl Woven table runner</a>
         </li>
         <li class="breadcrumb-item active">Table Runner Style 1</li>
-      </ol>    
-
-
-    <!-- Project One -->      
-      <div class="row">
-        <div class="col-lg-6 portfolio-item">
-          <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="{% static 'website/img/tablerunner/HJ-R-001-01.jpg' %}" alt=""></a>
-            <div class="card-body">              
-              <h6 class="card-text text-center">Item No.: HJ-R-001-01</h6>
-            </div> 
-          </div>
-        </div>
-        <div class="col-lg-6 portfolio-item">
-          <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="{% static 'website/img/tablerunner/HJ-R-002-01.jpg' %}" alt=""></a>
-            <div class="card-body">              
-              <h6 class="card-text text-center">Item No.: HJ-R-002-01</h6>
-            </div> 
-          </div>
-        </div>        
-      </div>
-
-      <!-- /.row -->
-
-    <!-- Project Two -->     
-      <div class="row">
-        <div class="col-lg-6 portfolio-item">
-          <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="{% static 'website/img/tablerunner/HJ-R-003-01.jpg' %}" alt=""></a>
-            <div class="card-body">              
-              <h6 class="card-text text-center">Item No.: HJ-R-003-01</h6>
-            </div> 
-          </div>
-        </div>
-        <div class="col-lg-6 portfolio-item">
-          <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="{% static 'website/img/tablerunner/HJ-R-004-01.jpg' %}" alt=""></a>
-            <div class="card-body">              
-              <h6 class="card-text text-center">Item No.: HJ-R-004-01</h6>
-            </div> 
-          </div>
-        </div>        
-      </div>
+    </ol>     
     
-      <!-- /.row -->
+{% endblock %}
+        
+{% block content %}
 
-      <!-- Project Three -->     
-      <div class="row">
+    <!-- Page Content -->
+    <!-- Project One -->            
+    <div class="row">
         <div class="col-lg-6 portfolio-item">
-          <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="{% static 'website/img/tablerunner/HJ-R-005-02.jpg' %}" alt=""></a>
-            <div class="card-body">              
-              <h6 class="card-text text-center">Item No.: HJ-R-005-02</h6>
-            </div> 
-          </div>
+            <div class="card h-100">
+                <a href="#"><img class="card-img-top" src="{% static 'website/img/tablerunner/HJ-R-001-01.jpg' %}" alt=""></a>
+                <div class="card-body">                            
+                    <h6 class="card-text text-center">Item No.: HJ-R-001-01</h6>
+                </div> 
+            </div>
         </div>
         <div class="col-lg-6 portfolio-item">
-          <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="{% static 'website/img/tablerunner/HJ-R-006-01.jpg' %}" alt=""></a>
-            <div class="card-body">              
-              <h6 class="card-text text-center">Item No.: HJ-R-006-01</h6>
-            </div> 
-          </div>
-        </div>        
-      </div>
-    
-      <!-- /.row -->
-
-      <!-- Project Three -->     
-      <div class="row">
-        <div class="col-lg-6 portfolio-item">
-          <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="{% static 'website/img/tablerunner/HJ-R-007-01.jpg' %}" alt=""></a>
-            <div class="card-body">              
-              <h6 class="card-text text-center">Item No.: HJ-R-007-01</h6>
-            </div> 
-          </div>
-        </div>
-        <div class="col-lg-6 portfolio-item">
-          <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="{% static 'website/img/tablerunner/HJ-R-008-01.jpg' %}" alt=""></a>
-            <div class="card-body">              
-              <h6 class="card-text text-center">Item No.: HJ-R-008-01</h6>
-            </div> 
-          </div>
-        </div>        
-      </div>
-    
-      <!-- /.row -->
-
-      <!-- Project Four -->     
-      <div class="row">
-        <div class="col-lg-6 portfolio-item">
-          <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="{% static 'website/img/tablerunner/HJ-R-009-01.jpg' %}" alt=""></a>
-            <div class="card-body">              
-              <h6 class="card-text text-center">Item No.: HJ-R-009-01</h6>
-            </div> 
-          </div>
-        </div>
-        <div class="col-lg-6 portfolio-item">
-          <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="{% static 'website/img/tablerunner/HJ-R-010-01.jpg' %}" alt=""></a>
-            <div class="card-body">              
-              <h6 class="card-text text-center">Item No.: HJ-R-010-01</h6>
-            </div> 
-          </div>
-        </div>        
-      </div>
-    
-      <!-- /.row -->
-
-      <!-- Project Three -->     
-      <div class="row">
-        <div class="col-lg-6 portfolio-item">
-          <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="{% static 'website/img/tablerunner/HJ-R-011-01.jpg' %}" alt=""></a>
-            <div class="card-body">              
-              <h6 class="card-text text-center">Item No.: HJ-R-011-01</h6>
-            </div> 
-          </div>
-        </div>
-      </div>
-       <!-- /.row -->
-
-      
-      <!-- Pagination -->
-      <ul class="pagination justify-content-center">
-        <li class="page-item">
-          <a class="page-link" href="/vinyl_woven_placemat/classified_style_1" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-            <span class="sr-only">Previous</span>
-          </a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#">1</a>
-        </li>        
-        <li class="page-item">
-          <a class="page-link" href="/vinyl_woven_placemat/classified_style_3" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-            <span>Next</span>
-          </a>
-        </li>
-      </ul>
-
+            <div class="card h-100">
+                <a href="#"><img class="card-img-top" src="{% static 'website/img/tablerunner/HJ-R-002-01.jpg' %}" alt=""></a>
+                <div class="card-body">                            
+                    <h6 class="card-text text-center">Item No.: HJ-R-002-01</h6>
+                </div> 
+            </div>
+        </div>                
     </div>
-    <!-- /.container -->
 
-    <!-- Footer -->
-    <footer class="py-3 bg-info">
-      <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; 2004-2018 HUIJIA Corporation, all Rights reserved
-          <a class="link" style='color:white' href="http://www.miitbeian.gov.cn/" target="_blank"> 浙ICP备18033823号</a> 
-        </p>
-        <p class="m-0 text-center text-white">
-          Add:No.128, Zhengzhong road, Xinqiao, Luqiao,Taizhou City, Zhejiang Province, China,318055                  E-mail: info@huijia-cn.com         
-        </p>        
-      </div>
-      <!-- /.container -->
-    </footer>
+    <!-- /.row -->
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="{% static 'website/vendor/jquery/jquery.min.js' %}"></script>
-    <script src="{% static 'website/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>  
+<!-- Project Two -->         
+    <div class="row">
+        <div class="col-lg-6 portfolio-item">
+            <div class="card h-100">
+                <a href="#"><img class="card-img-top" src="{% static 'website/img/tablerunner/HJ-R-003-01.jpg' %}" alt=""></a>
+                <div class="card-body">                            
+                    <h6 class="card-text text-center">Item No.: HJ-R-003-01</h6>
+                </div> 
+            </div>
+        </div>
+        <div class="col-lg-6 portfolio-item">
+            <div class="card h-100">
+                <a href="#"><img class="card-img-top" src="{% static 'website/img/tablerunner/HJ-R-004-01.jpg' %}" alt=""></a>
+                <div class="card-body">                            
+                    <h6 class="card-text text-center">Item No.: HJ-R-004-01</h6>
+                </div> 
+            </div>
+        </div>                
+    </div>
 
-  </body>
+    <!-- /.row -->
 
-</html>
+    <!-- Project Three -->         
+    <div class="row">
+        <div class="col-lg-6 portfolio-item">
+            <div class="card h-100">
+                <a href="#"><img class="card-img-top" src="{% static 'website/img/tablerunner/HJ-R-005-02.jpg' %}" alt=""></a>
+                <div class="card-body">                            
+                    <h6 class="card-text text-center">Item No.: HJ-R-005-02</h6>
+                </div> 
+            </div>
+        </div>
+        <div class="col-lg-6 portfolio-item">
+            <div class="card h-100">
+                <a href="#"><img class="card-img-top" src="{% static 'website/img/tablerunner/HJ-R-006-01.jpg' %}" alt=""></a>
+                <div class="card-body">                            
+                    <h6 class="card-text text-center">Item No.: HJ-R-006-01</h6>
+                </div> 
+            </div>
+        </div>                
+    </div>
+
+    <!-- /.row -->
+
+    <!-- Project Three -->         
+    <div class="row">
+        <div class="col-lg-6 portfolio-item">
+            <div class="card h-100">
+                <a href="#"><img class="card-img-top" src="{% static 'website/img/tablerunner/HJ-R-007-01.jpg' %}" alt=""></a>
+                <div class="card-body">                            
+                    <h6 class="card-text text-center">Item No.: HJ-R-007-01</h6>
+                </div> 
+            </div>
+        </div>
+        <div class="col-lg-6 portfolio-item">
+            <div class="card h-100">
+                <a href="#"><img class="card-img-top" src="{% static 'website/img/tablerunner/HJ-R-008-01.jpg' %}" alt=""></a>
+                <div class="card-body">                            
+                    <h6 class="card-text text-center">Item No.: HJ-R-008-01</h6>
+                </div> 
+            </div>
+        </div>                
+    </div>
+
+    <!-- /.row -->
+
+    <!-- Project Four -->         
+    <div class="row">
+        <div class="col-lg-6 portfolio-item">
+            <div class="card h-100">
+                <a href="#"><img class="card-img-top" src="{% static 'website/img/tablerunner/HJ-R-009-01.jpg' %}" alt=""></a>
+                <div class="card-body">                            
+                    <h6 class="card-text text-center">Item No.: HJ-R-009-01</h6>
+                </div> 
+            </div>
+        </div>
+        <div class="col-lg-6 portfolio-item">
+            <div class="card h-100">
+                <a href="#"><img class="card-img-top" src="{% static 'website/img/tablerunner/HJ-R-010-01.jpg' %}" alt=""></a>
+                <div class="card-body">                            
+                    <h6 class="card-text text-center">Item No.: HJ-R-010-01</h6>
+                </div> 
+            </div>
+        </div>                
+    </div>
+
+    <!-- /.row -->
+
+    <!-- Project Three -->         
+    <div class="row">
+        <div class="col-lg-6 portfolio-item">
+            <div class="card h-100">
+                <a href="#"><img class="card-img-top" src="{% static 'website/img/tablerunner/HJ-R-011-01.jpg' %}" alt=""></a>
+                <div class="card-body">                            
+                    <h6 class="card-text text-center">Item No.: HJ-R-011-01</h6>
+                </div> 
+            </div>
+        </div>
+    </div>
+     <!-- /.row -->
+
+{% endblock %}
+
+{% block pagination %}
+
+    <!-- Pagination -->
+    <ul class="pagination justify-content-center">
+        <li class="page-item">
+            <a class="page-link" href="/vinyl_woven_placemat/classified_style_1" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+            </a>
+        </li>
+        <li class="page-item active">
+            <a class="page-link" href="#">1</a>
+        </li>                
+        <li class="page-item">
+            <a class="page-link" href="/vinyl_woven_placemat/classified_style_3" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                <span>Next</span>
+            </a>
+        </li>
+    </ul>
+
+{% endblock %}

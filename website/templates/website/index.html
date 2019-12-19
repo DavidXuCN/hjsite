@@ -1,350 +1,354 @@
 {% extends 'base_en.html' %}
 {% load static %}
 
-{% block title %} Huijia I & E Co.,Ltd. {% endblock %}
+{% block title %} Huijia I & E Co.,Ltd. | Home {% endblock %}
+
+{% block nav_home_active %} active {% endblock %}
+
+{% block header %}
+    <header>
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                <!-- Slide One - Set the background image for this slide in the line below -->
+                <div class="carousel-item active" style="background-image: url('{% static 'website/img/first-slide1.jpg' %}')">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3>Vinyl Woven Place Mat</h3>
+                        <p>There are many designs for the item.</p>
+                    </div>
+                </div>
+                <!-- Slide Two - Set the background image for this slide in the line below -->
+                <div class="carousel-item" style="background-image: url('{% static 'website/img/second-slide4.jpg' %}')">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3>Colorful Tufted PVC Car-carpet</h3>
+                        <p>There are many designs for the item.</p>
+                    </div>
+                </div>
+                <!-- Slide Three - Set the background image for this slide in the line below -->
+                <div class="carousel-item" style="background-image: url('{% static 'website/img/machineg.jpg' %}')">
+                    <div class="carousel-caption d-none d-md-block text-success">
+                        <h3>Plastic Extrusion Machinery</h3>
+                        <p>High quality, Robustness,High benefit</p>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </header>
+{% endblock %}
+
 
 {% block content %}
+    <!-- Page Content -->
+    <div class="container">
 
-  <header>
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-      </ol>
-      <div class="carousel-inner" role="listbox">
-        <!-- Slide One - Set the background image for this slide in the line below -->
-        <div class="carousel-item active" style="background-image: url('{% static 'website/img/first-slide1.jpg' %}')">
-          <div class="carousel-caption d-none d-md-block">
-            <h3>Vinyl Woven Place Mat</h3>
-            <p>There are many designs for the item.</p>
-          </div>
+        <h1 class="my-4">Welcome to Huijia I & E </h1>
+
+        <!-- Marketing Icons Section -->            
+        <div class="row">
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100">
+                    <h5 class="card-header ">Plastic Daily Necessities Series</h5>
+                    <div class="card-body ">
+                        <ul>
+                        <p class="card-text">
+                            Products:
+                            <li class="link">
+                                <a class="text-dark" href="/vinyl_woven_placemat/classified_style_1">Vinyl Woven Place Mat</a>
+                            </li>
+                            <li class="link">
+                                <a class="text-dark" href="/vinyl_woven_table_runner/vinyl_woven_table_runner_1">Vinyl Woven Table Runner</a>
+                            </li >
+                            <li class="link">
+                                <a class="text-dark" href="/vinyl_tufted_doormat/vinyl_tufted_doormat_1">Vinyl Tufted Doormat</a>
+                            </li>
+                            <li class="link">
+                                <a class="text-dark" href="#">Plastic Injection Products</a>
+                            </li>
+                        </p>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <a href="/vinyl_woven_placemat/placemat_profile" class="btn btn-info">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4 ">
+                <div class="card h-100">
+                    <h5 class="card-header ">Car-Carpet Series</h5>
+                    <div class="card-body">
+                        <ul>
+                        <p class="card-text">
+                            Product Feature:
+                            <li>Surface Material: 70% PVC + 30% PET</li>
+                            <li>Back Material: 90% PVC + 10% fabric</li>
+                            <li>Thickness: 4mm-6mm</li>
+                            <li>Application: Car Decoration and Trunk decoration</li>
+                            <li>Feature: Anti-Bacteria, Corrosion-Resistant, Anti-slip, Waterproof, Easy Cleaning and
+                            Many designs to choose。</li>
+                        </p>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <a href="/car_carpet/car_carpet_1" class="btn btn-info">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card h-80">
+                    <h5 class="card-header ">Plastic Extrusion Machinery Series</h5>
+                    <div class="card-body pre-scrollable">
+                        <ul>
+                        <p class="card-text ">
+                            Products:
+                            <li>
+                                <a class="text-dark" href="/plastic_extrusion_machinery/eletronic_wire_equipment">Eletronic Wire Equipment With Double Automatic Winding Device</a>
+                            </li>
+                            <li>
+                                <a class="text-dark" href="/plastic_extrusion_machinery/wire_cable_sheath_line_equipment">Wire and Cable and Sheath Line Equipment</a>
+                            </li>
+                            <li>
+                                <a class="text-dark" href="/plastic_extrusion_machinery/pet_wiredrawing_machine_equipment">PET wiredrawing Machine Equipment</a>
+                            </li>
+                            <li>
+                                <a class="text-dark" href="/plastic_extrusion_machinery/pp_brush_wiredrawing_machine_equipment">PP Brush Wire Drawing Machine Equipment</a>
+                            </li>
+                            <li>
+                                <a class="text-dark" href="/plastic_extrusion_machinery/plastic_round_monofilament_silk_wiredrawing_machine">Plastic Round silk Monofilament Wire Drawing Machine</a>
+                            </li>
+                            <li>
+                                <a class="text-dark" href="/plastic_extrusion_machinery/manager_lin_coating_unit">Manager Lin Coating Unit</a>
+                            </li>
+                            <li>
+                                <a class="text-dark" href="/plastic_extrusion_machinery/plastic_seat_tube_equipment">Plastic Seat Tube Equipment</a>
+                            </li>
+                            <li>
+                                <a class="text-dark" href="/plastic_extrusion_machinery/plastic_sealing_equipment">Plastic Sealing Equipment</a>
+                            </li>
+                            <li>
+                                <a class="text-dark" href="/plastic_extrusion_machinery/hot_melt_glue_equipment">Hot Melt Glue Equipment</a>
+                            </li>
+                            <li>
+                                <a class="text-dark" href="/plastic_extrusion_machinery/squeeze_film_line_equipment">Squeeze Film Line Equipment</a>
+                            </li>
+                        </p>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <a href="/plastic_extrusion_machinery/machine_profile" class="btn btn-info">Learn More</a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- Slide Two - Set the background image for this slide in the line below -->
-        <div class="carousel-item" style="background-image: url('{% static 'website/img/second-slide4.jpg' %}')">
-          <div class="carousel-caption d-none d-md-block">
-            <h3>Colorful Tufted PVC Car-carpet</h3>
-            <p>There are many designs for the item.</p>
-          </div>
+        
+        <!-- /.row -->
+
+        <!-- Portfolio Section -->
+        <h2>Products Profile:</h2>
+
+        <div class="row">
+            <div class="col-lg-4 col-sm-6 portfolio-item">
+                <div class="card h-100">
+                    <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/cover.jpg' %}" alt=""></a>                        
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="/vinyl_woven_placemat/placemat_profile">Vinyl Woven Place Mat</a>
+                        </h4>
+                        <ul>
+                            <li class="link">
+                            <a class="text-dark" href="/vinyl_woven_placemat/classified_style_1" >Classified Style</a>
+                            </li>
+                            <li class="link">
+                            <a class="text-dark" href="/vinyl_woven_placemat/regular_pattern_1" >Regular Pattern</a>
+                            </li>
+                            <li class="link">
+                            <a class="text-dark" href="/vinyl_woven_placemat/placemat_profile" >Place Mat Profile:</a>
+                            </li> 
+                                <ul>
+                                    <li class="text-muted">Product Details Display</li> 
+                                    <li class="text-muted">Product Regular Size</li>
+                                    <li class="text-muted">Special Packaging Display</li> 
+                                </ul>
+                        </ul> 
+
+                                                                    
+                        <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p> -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 portfolio-item">
+                <div class="card h-100">
+                    <a href="#"><img class="card-img-top" src="{% static 'website/img/tablerunner/HJ-R-001-01.jpg' %}" alt=""></a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="/vinyl_woven_placemat/classified_style_1">Vinyl Woven Table Runner</a>
+                        </h4>
+                        <ul>
+                            <li class="link">
+                            <a class="text-dark" href="/vinyl_woven_table_runner/vinyl_woven_table_runner_1" >Table Runner Style</a>
+                            </li>                                
+                            <li class="link">
+                            <a class="text-dark" href="#" >Table Runner Profile:</a>
+                            </li> 
+                                <ul>
+                                    <li class="text-muted">Product Details Display</li> 
+                                    <li class="text-muted">Product Regular Size</li>                                        
+                                </ul>
+                        </ul> 
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 portfolio-item">
+                <div class="card h-100">
+                    <a href="#"><img class="card-img-top" src="{% static 'website/img/doormat/cover A.jpg' %}" alt=""></a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="#">Vinyl Tufted Doormat</a>
+                        </h4>
+                        <ul>
+                            <li class="link">
+                            <a class="text-dark" href="/vinyl_tufted_doormat/vinyl_tufted_doormat_1" >Vinyl Tufted Doormat Style</a>
+                            </li>                                
+                            <li class="link">
+                            <a class="text-dark" href="#" >Doormat Profile:</a>
+                            </li> 
+                                <ul>
+                                    <li class="text-muted">Product Details Display</li> 
+                                    <li class="text-muted">Product Regular Size</li>
+                                    <li class="text-muted">Special Packaging Display</li> 
+                                </ul>
+                        </ul> 
+                    </div>
+                </div>
+            </div> 
+            <div class="col-lg-4 col-sm-6 portfolio-item">
+                <div class="card h-100">
+                    <a href="#"><img class="card-img-top" src="{% static 'website/img/injection product/cover.jpg' %}" alt=""></a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="#">Plastic Injection Products</a>
+                        </h4>
+                        <ul>
+                            <li class="link">
+                            <a class="text-dark" href="#" >Plastic Tray</a>
+                            </li>
+                            <li class="link">
+                            <a class="text-dark" href="#" >Melamin Products</a>
+                            </li>
+                            <li class="link">
+                            <a class="text-dark" href="#" >Products Profile:</a>
+                            </li> 
+                                <ul>
+                                    <li class="text-muted">All Product Details Display</li>
+                                </ul>
+                        </ul> 
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 portfolio-item">
+                <div class="card h-100">
+                    <a href="/car_carpet/car_carpet_1"><img class="card-img-top" src="{% static 'website/img/car carpet/cover.jpg' %}" alt=""></a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="/car_carpet/car_carpet_1">Vinyl Tufted Car-Carpet</a>
+                        </h4>
+                        <ul>
+                            <li class="link">
+                            <a class="text-dark" href="/car_carpet/car_carpet_1" >Car Carpet Style</a>
+                            </li>                                
+                            <li class="link">
+                            <a class="text-dark" href="#" >Car Carpet Profile:</a>
+                            </li> 
+                                <ul>
+                                    <li class="text-muted">Product Details Display</li> 
+                                    <li class="text-muted">Product Regular Size</li>
+                                    <li class="text-muted">Special Packaging Display</li> 
+                                </ul>
+                        </ul> 
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 portfolio-item">
+                <div class="card h-100">
+                    <a href="#"><img class="card-img-top" src="{% static 'website/img/machine/wire machine.jpg' %}" alt=""></a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="#">Eletronic Wire Equipment With Double Automatic Winding Device</a>
+                        </h4>
+                        <ul>
+                            <li class="link">
+                                <a class="text-dark" href="/plastic_extrusion_machinery/eletronic_wire_equipment" >Eletronic Wire Equipment</a>
+                            </li>                                
+                            <li class="link">
+                                <a class="text-dark" href="/plastic_extrusion_machinery/machine_profile" >Machine Profile</a>
+                            </li> 
+                                <ul>
+                                    <li class="text-muted">All Product Details Display</li>
+                                </ul>
+                        </ul> 
+                    </div>
+                </div>
+            </div>         
         </div>
-        <!-- Slide Three - Set the background image for this slide in the line below -->
-        <div class="carousel-item" style="background-image: url('{% static 'website/img/machineg.jpg' %}')">
-          <div class="carousel-caption d-none d-md-block text-success">
-            <h3>Plastic Extrusion Machinery</h3>
-            <p>High quality, Robustness,High benefit</p>
-          </div>
+        <!-- /.row -->
+
+        <!-- Features Section -->
+        <div class="row">
+            <div class="col-lg-6">
+                <h2>Huijia Products Features</h2>
+                <p>Our Products Currently in Operation Include:</p>
+                <ul>
+                    <li>
+                        <strong>Vinyl Woven Place Mat</strong>
+                    </li>
+                    <li>
+                        <strong>Vinyl Woven Table Runner</strong>
+                    </li>
+                    <li>
+                        <strong>Vinyl Tufted Doormat</strong>
+                    </li>
+                    <li>
+                        <strong>Plastic Injection Products</strong>
+                    </li>
+                    <li>
+                        <strong>Vinyl Tufted Car-Carpet</strong>
+                    </li>
+                    <li>
+                        <strong>Plastic Extrusion Machinery Series:</strong>
+                    </li>
+                </ul>
+                <p>Eletronic Wire Equipment With Double Automatic Winding Device;Wire and Cable and Sheath Line Equipment;PET wiredrawing Machine Equipment;PP Brush Wire Drawing Machine Equipment;Plastic Round silk Monofilament Wire Drawing Machine;Manager Lin Coating Unit;Plastic Seat Tube Equipment;Plastic Sealing Equipment;Hot Melt Glue Equipment;Squeeze Film Line Equipment</p>
+            </div>
+            <div class="col-lg-6">
+                <img class="img-fluid rounded" src="{% static 'website/img/hands.jpg' %}" alt="">
+            </div>
         </div>
-      </div>
-      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Call to Action Section -->
+        <div class="row mb-4">
+            <div class="col-md-8">
+                <p>All products can be customized according to customer requirements.</p>
+            </div>
+            <div class="col-md-4">
+                <a class="btn btn-lg btn-secondary btn-block bg-info" href="#">Call to Action</a>
+            </div>
+        </div>
+
     </div>
-  </header>
-
-  <!-- Page Content -->
-  <div class="container">
-
-    <h1 class="my-4">Welcome to Huijia I & E </h1>
-
-    <!-- Marketing Icons Section -->      
-    <div class="row">
-      <div class="col-lg-4 mb-4">
-        <div class="card h-100">
-          <h5 class="card-header ">Plastic Daily Necessities Series</h5>
-          <div class="card-body ">
-            <ul>
-            <p class="card-text">
-              Products:
-              <li class="link">
-                <a class="text-dark" href="/vinyl_woven_placemat/classified_style_1">Vinyl Woven Place Mat</a>
-              </li>
-              <li class="link">
-                <a class="text-dark" href="/vinyl_woven_table_runner/vinyl_woven_table_runner_1">Vinyl Woven Table Runner</a>
-              </li >
-              <li class="link">
-                <a class="text-dark" href="/vinyl_tufted_doormat/vinyl_tufted_doormat_1">Vinyl Tufted Doormat</a>
-              </li>
-              <li class="link">
-                <a class="text-dark" href="#">Plastic Injection Products</a>
-              </li>
-            </p>
-            </ul>
-          </div>
-          <div class="card-footer">
-            <a href="/vinyl_woven_placemat/placemat_profile" class="btn btn-info">Learn More</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 mb-4 ">
-        <div class="card h-100">
-          <h5 class="card-header ">Car-Carpet Series</h5>
-          <div class="card-body">
-            <ul>
-            <p class="card-text">
-              Product Feature:
-              <li>Surface Material: 70% PVC + 30% PET</li>
-              <li>Back Material: 90% PVC + 10% fabric</li>
-              <li>Thickness: 4mm-6mm</li>
-              <li>Application: Car Decoration and Trunk decoration</li>
-              <li>Feature: Anti-Bacteria, Corrosion-Resistant, Anti-slip, Waterproof, Easy Cleaning and
-              Many designs to choose。</li>
-            </p>
-            </ul>
-          </div>
-          <div class="card-footer">
-            <a href="/car_carpet/car_carpet_1" class="btn btn-info">Learn More</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 mb-4">
-        <div class="card h-80">
-          <h5 class="card-header ">Plastic Extrusion Machinery Series</h5>
-          <div class="card-body pre-scrollable">
-            <ul>
-            <p class="card-text ">
-              Products:
-              <li>
-                <a class="text-dark" href="/plastic_extrusion_machinery/eletronic_wire_equipment">Eletronic Wire Equipment With Double Automatic Winding Device</a>
-              </li>
-              <li>
-                <a class="text-dark" href="/plastic_extrusion_machinery/wire_cable_sheath_line_equipment">Wire and Cable and Sheath Line Equipment</a>
-              </li>
-              <li>
-                <a class="text-dark" href="/plastic_extrusion_machinery/pet_wiredrawing_machine_equipment">PET wiredrawing Machine Equipment</a>
-              </li>
-              <li>
-                <a class="text-dark" href="/plastic_extrusion_machinery/pp_brush_wiredrawing_machine_equipment">PP Brush Wire Drawing Machine Equipment</a>
-              </li>
-              <li>
-                <a class="text-dark" href="/plastic_extrusion_machinery/plastic_round_monofilament_silk_wiredrawing_machine">Plastic Round silk Monofilament Wire Drawing Machine</a>
-              </li>
-              <li>
-                <a class="text-dark" href="/plastic_extrusion_machinery/manager_lin_coating_unit">Manager Lin Coating Unit</a>
-              </li>
-              <li>
-                <a class="text-dark" href="/plastic_extrusion_machinery/plastic_seat_tube_equipment">Plastic Seat Tube Equipment</a>
-              </li>
-              <li>
-                <a class="text-dark" href="/plastic_extrusion_machinery/plastic_sealing_equipment">Plastic Sealing Equipment</a>
-              </li>
-              <li>
-                <a class="text-dark" href="/plastic_extrusion_machinery/hot_melt_glue_equipment">Hot Melt Glue Equipment</a>
-              </li>
-              <li>
-                <a class="text-dark" href="/plastic_extrusion_machinery/squeeze_film_line_equipment">Squeeze Film Line Equipment</a>
-              </li>
-            </p>
-            </ul>
-          </div>
-          <div class="card-footer">
-            <a href="/plastic_extrusion_machinery/machine_profile" class="btn btn-info">Learn More</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <!-- /.row -->
-
-    <!-- Portfolio Section -->
-    <h2>Products Profile:</h2>
-
-    <div class="row">
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/cover.jpg' %}" alt=""></a>            
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="/vinyl_woven_placemat/placemat_profile">Vinyl Woven Place Mat</a>
-            </h4>
-            <ul>
-              <li class="link">
-              <a class="text-dark" href="/vinyl_woven_placemat/classified_style_1" >Classified Style</a>
-              </li>
-              <li class="link">
-              <a class="text-dark" href="/vinyl_woven_placemat/regular_pattern_1" >Regular Pattern</a>
-              </li>
-              <li class="link">
-              <a class="text-dark" href="/vinyl_woven_placemat/placemat_profile" >Place Mat Profile:</a>
-              </li> 
-                <ul>
-                  <li class="text-muted">Product Details Display</li> 
-                  <li class="text-muted">Product Regular Size</li>
-                  <li class="text-muted">Special Packaging Display</li> 
-                </ul>
-            </ul> 
-
-                                  
-            <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p> -->
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="{% static 'website/img/tablerunner/HJ-R-001-01.jpg' %}" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="/vinyl_woven_placemat/classified_style_1">Vinyl Woven Table Runner</a>
-            </h4>
-            <ul>
-              <li class="link">
-              <a class="text-dark" href="/vinyl_woven_table_runner/vinyl_woven_table_runner_1" >Table Runner Style</a>
-              </li>                
-              <li class="link">
-              <a class="text-dark" href="#" >Table Runner Profile:</a>
-              </li> 
-                <ul>
-                  <li class="text-muted">Product Details Display</li> 
-                  <li class="text-muted">Product Regular Size</li>                    
-                </ul>
-            </ul> 
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="{% static 'website/img/doormat/cover A.jpg' %}" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Vinyl Tufted Doormat</a>
-            </h4>
-            <ul>
-              <li class="link">
-              <a class="text-dark" href="/vinyl_tufted_doormat/vinyl_tufted_doormat_1" >Vinyl Tufted Doormat Style</a>
-              </li>                
-              <li class="link">
-              <a class="text-dark" href="#" >Doormat Profile:</a>
-              </li> 
-                <ul>
-                  <li class="text-muted">Product Details Display</li> 
-                  <li class="text-muted">Product Regular Size</li>
-                  <li class="text-muted">Special Packaging Display</li> 
-                </ul>
-            </ul> 
-          </div>
-        </div>
-      </div> 
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="{% static 'website/img/injection product/cover.jpg' %}" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Plastic Injection Products</a>
-            </h4>
-            <ul>
-              <li class="link">
-              <a class="text-dark" href="#" >Plastic Tray</a>
-              </li>
-              <li class="link">
-              <a class="text-dark" href="#" >Melamin Products</a>
-              </li>
-              <li class="link">
-              <a class="text-dark" href="#" >Products Profile:</a>
-              </li> 
-                <ul>
-                  <li class="text-muted">All Product Details Display</li>                                        
-                </ul>
-            </ul> 
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="/car_carpet/car_carpet_1"><img class="card-img-top" src="{% static 'website/img/car carpet/cover.jpg' %}" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="/car_carpet/car_carpet_1">Vinyl Tufted Car-Carpet</a>
-            </h4>
-            <ul>
-              <li class="link">
-              <a class="text-dark" href="/car_carpet/car_carpet_1" >Car Carpet Style</a>
-              </li>                
-              <li class="link">
-              <a class="text-dark" href="#" >Car Carpet Profile:</a>
-              </li> 
-                <ul>
-                  <li class="text-muted">Product Details Display</li> 
-                  <li class="text-muted">Product Regular Size</li>
-                  <li class="text-muted">Special Packaging Display</li> 
-                </ul>
-            </ul> 
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="{% static 'website/img/machine/wire machine.jpg' %}" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Eletronic Wire Equipment With Double Automatic Winding Device</a>
-            </h4>
-            <ul>
-              <li class="link">
-              <a class="text-dark" href="/plastic_extrusion_machinery/eletronic_wire_equipment" >Eletronic Wire Equipment</a>
-              </li>                
-              <li class="link">
-              <a class="text-dark" href="/plastic_extrusion_machinery/machine_profile" >Machine Profile</a>
-              </li> 
-                <ul>
-                  <li class="text-muted">All Product Details Display</li>                                       
-                </ul>
-            </ul> 
-          </div>
-        </div>
-      </div>     
-    </div>
-    <!-- /.row -->
-
-    <!-- Features Section -->
-    <div class="row">
-      <div class="col-lg-6">
-        <h2>Huijia Products Features</h2>
-        <p>Our Products Currently in Operation Include:</p>
-        <ul>
-          <li>
-            <strong>Vinyl Woven Place Mat</strong>
-          </li>
-          <li>
-            <strong>Vinyl Woven Table Runner</strong>
-          </li>
-          <li>
-            <strong>Vinyl Tufted Doormat</strong>
-          </li>
-          <li>
-            <strong>Plastic Injection Products</strong>
-          </li>
-          <li>
-            <strong>Vinyl Tufted Car-Carpet</strong>
-          </li>
-          <li>
-            <strong>Plastic Extrusion Machinery Series:</strong>
-          </li>
-        </ul>
-        <p>Eletronic Wire Equipment With Double Automatic Winding Device;Wire and Cable and Sheath Line Equipment;PET wiredrawing Machine Equipment;PP Brush Wire Drawing Machine Equipment;Plastic Round silk Monofilament Wire Drawing Machine;Manager Lin Coating Unit;Plastic Seat Tube Equipment;Plastic Sealing Equipment;Hot Melt Glue Equipment;Squeeze Film Line Equipment</p>
-      </div>
-      <div class="col-lg-6">
-        <img class="img-fluid rounded" src="{% static 'website/img/hands.jpg' %}" alt="">
-      </div>
-    </div>
-    <!-- /.row -->
-
-    <hr>
-
-    <!-- Call to Action Section -->
-    <div class="row mb-4">
-      <div class="col-md-8">
-        <p>All products can be customized according to customer requirements.</p>
-      </div>
-      <div class="col-md-4">
-        <a class="btn btn-lg btn-secondary btn-block bg-info" href="#">Call to Action</a>
-      </div>
-    </div>
-
-  </div>
-  <!-- /.container -->
+    <!-- /.container -->
 
 {% endblock %}

@@ -1,392 +1,293 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base_en.html' %}
 {% load static %}
 
-  <head>
+{% block title %} Product | Placemat {% endblock %}
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+{% block nav_product_active %} active {% endblock %}
 
-    <title>Huijia I & E Co.</title>
+{% block Heading/Breadcrumbs %}
 
-    <!-- Bootstrap core CSS -->
-    <link href="{% static 'website/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="{% static 'website/css/modern-business.css' %}" rel="stylesheet">
-    <link rel="icon" href = "{% static 'website/img/icon.ico' %}" type = "image/x-icon" />
-
-  </head>
-
-  <body>
-
-    <!-- Navigation -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="/"><img src="{% static 'website/img/icon2c.png' %}" > Taizhou Huijia Imp. & Exp. Co., Ltd.</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="/">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/about">About</a>
-            </li>
-            <li class="nav-item dropdown">              
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownProductCategory1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Product Category
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProductCategory1">
-                <div class="dropdown-submenu active">
-                  <a class="dropdown-item" tabindex="-1" href="javascript:;">Plastic daily necessities series</a>
-                  <div class="dropdown-menu dropdown-" aria-labelledby="navbarDropdownProductCategory2">
-                    <a class="dropdown-item " href="#">Vinyl Woven Place Mat</a>
-                    <a class="dropdown-item " href="#">Vinyl Woven Table Runner</a>
-                    <a class="dropdown-item " href="#">Vinyl Tufted Doormat</a>
-                    <a class="dropdown-item " href="#">Plastic Injection Products</a>
-                  </div>
-                </div>                
-                <a class="dropdown-item" href="portfolio-2-col.html">Car-carpet Series</a>
-                <a class="dropdown-item" href="portfolio-2-col.html">Plastic Extrusion Machinery Series</a>                 
-              </div>
-            </li>            
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownPortfolio1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Product
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio1">                
-                <div class="dropdown-submenu">
-                  <a class="dropdown-item" tabindex="-1" href="javascript:;">Vinyl Woven Place Mat</a>
-                  <div class="dropdown-menu dropdown-" aria-labelledby="navbarDropdownPortfolio2">
-                    <a class="dropdown-item " href="/vinyl_woven_placemat/classified_style_1">Classified Style</a>
-                    <a class="dropdown-item " href="/vinyl_woven_placemat/regular_pattern_1">Regular Pattern</a>
-                    <a class="dropdown-item " href="/vinyl_woven_placemat/placemat_profile">Place Mat profile</a>
-                  </div>
-                </div> 
-                <!-- <a class="dropdown-item" href="portfolio-1-col.html">1 Column Portfolio</a> -->                                      
-                <a class="dropdown-item" href="portfolio-2-col.html">Vinyl Woven Table Runner</a>                  
-                <a class="dropdown-item" href="portfolio-3-col.html">Vinyl Tufted Doormat</a>                
-                <a class="dropdown-item" href="portfolio-4-col.html">Plastic Injection Products</a> 
-                <a class="dropdown-item" href="portfolio-4-col.html">Vinyl Tufted Car-carpet</a> 
-                <a class="dropdown-item" href="portfolio-4-col.html">Plastic Extrusion Machinery</a>                        
-              </div>                                 
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/blog">Blog</a>              
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/contact">Contact</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <!-- Page Content -->
-    <div class="container">
-
-      <!-- Page Heading/Breadcrumbs -->
-      <h1 class="mt-4 mb-3">Vinyl Woven Place Mat
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">Vinyl Woven Place Mat
         <small>Classified Style Series</small>
-      </h1>
+    </h1>
 
-      <ol class="breadcrumb">
+    <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="index.html">Home</a>
+            <a href="/">Home</a>
         </li>
         <li class="breadcrumb-item">
-          <a href="/blog">Product Category</a>
-        </li>  
+            <a href="/">Product Category</a>
+        </li>    
         <li class="breadcrumb-item">
-          <a href="/blog">Plastic daily necessities series</a>
-        </li>  
+            <a href="/">Plastic daily necessities series</a>
+        </li>    
         <li class="breadcrumb-item">
-           <a href="/blog">Vinyl Woven Place Mat</a>
+             <a href="/vinyl_woven_placemat/placemat_profile">Vinyl Woven Place Mat</a>
         </li>
         <li class="breadcrumb-item active">Regular Pattern 1</li>
-      </ol>
+    </ol>
+    
+{% endblock %}
+        
+{% block content %}
 
-      <!-- Project One -->
-      <div class="row">
+    <!-- Page Content -->
+    <!-- Project One -->
+    <div class="row">
         <div class="col-md-3">
-          <h3>Regular Pattern:</h3>            
-        </div>                 
-      </div>
-      <div class="row">
+            <h3>Regular Pattern:</h3>                        
+        </div>                                 
+    </div>
+    <div class="row">
         <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item"> 
-          <div class="card ">         
-            <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D001.jpg' %}" alt=""></a>
-            <div class="card-body">              
-              <h6 class="card-text text-center">Pattern No.: D001</h6>
-            </div>  
-          </div>        
+            <div class="card ">                 
+                <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D001.jpg' %}" alt=""></a>
+                <div class="card-body">                            
+                    <h6 class="card-text text-center">Pattern No.: D001</h6>
+                </div>    
+            </div>                
         </div>
         <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item"> 
-          <div class="card ">         
-            <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D002.jpg' %}" alt=""></a>
-            <div class="card-body">              
-              <h6 class="card-text text-center">Pattern No.: D002</h6>
-            </div>  
-          </div>        
+            <div class="card ">                 
+                <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D002.jpg' %}" alt=""></a>
+                <div class="card-body">                            
+                    <h6 class="card-text text-center">Pattern No.: D002</h6>
+                </div>    
+            </div>                
         </div>
         <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item"> 
-          <div class="card ">         
-            <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D003.jpg' %}" alt=""></a>
-            <div class="card-body">              
-              <h6 class="card-text text-center">Pattern No.: D003</h6>
-            </div>  
-          </div>        
+            <div class="card ">                 
+                <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D003.jpg' %}" alt=""></a>
+                <div class="card-body">                            
+                    <h6 class="card-text text-center">Pattern No.: D003</h6>
+                </div>    
+            </div>                
         </div>
         <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item"> 
-          <div class="card ">         
-            <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D004.jpg' %}" alt=""></a>
-            <div class="card-body">              
-              <h6 class="card-text text-center">Pattern No.: D004</h6>
-            </div>  
-          </div>        
+            <div class="card ">                 
+                <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D004.jpg' %}" alt=""></a>
+                <div class="card-body">                            
+                    <h6 class="card-text text-center">Pattern No.: D004</h6>
+                </div>    
+            </div>                
         </div>
-      </div>      
-      <!-- /.row -->
+    </div>            
+    <!-- /.row -->
 
-    <!-- Project Two -->      
-      <div class="row">
+<!-- Project Two -->            
+    <div class="row">
         <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item"> 
-          <div class="card ">         
-            <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D005.jpg' %}" alt=""></a>
-            <div class="card-body">              
-              <h6 class="card-text text-center">Pattern No.: D005</h6>
-            </div>  
-          </div>        
+            <div class="card ">                 
+                <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D005.jpg' %}" alt=""></a>
+                <div class="card-body">                            
+                    <h6 class="card-text text-center">Pattern No.: D005</h6>
+                </div>    
+            </div>                
         </div>
         <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item"> 
-          <div class="card ">         
-            <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D006.jpg' %}" alt=""></a>
-            <div class="card-body">              
-              <h6 class="card-text text-center">Pattern No.: D006</h6>
-            </div>  
-          </div>        
+            <div class="card ">                 
+                <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D006.jpg' %}" alt=""></a>
+                <div class="card-body">                            
+                    <h6 class="card-text text-center">Pattern No.: D006</h6>
+                </div>    
+            </div>                
         </div>
         <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item"> 
-          <div class="card ">         
-            <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D007.jpg' %}" alt=""></a>
-            <div class="card-body">              
-              <h6 class="card-text text-center">Pattern No.: D007</h6>
-            </div>  
-          </div>        
+            <div class="card ">                 
+                <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D007.jpg' %}" alt=""></a>
+                <div class="card-body">                            
+                    <h6 class="card-text text-center">Pattern No.: D007</h6>
+                </div>    
+            </div>                
         </div>
         <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item"> 
-          <div class="card ">         
-            <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D008.jpg' %}" alt=""></a>
-            <div class="card-body">              
-              <h6 class="card-text text-center">Pattern No.: D008</h6>
-            </div>  
-          </div>        
+            <div class="card ">                 
+                <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D008.jpg' %}" alt=""></a>
+                <div class="card-body">                            
+                    <h6 class="card-text text-center">Pattern No.: D008</h6>
+                </div>    
+            </div>                
         </div>
-      </div>
-      <!-- /.row -->
+    </div>
+    <!-- /.row -->
 
-      <!-- Project Three -->      
-      <div class="row">
+    <!-- Project Three -->            
+    <div class="row">
         <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item"> 
-          <div class="card ">         
-            <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D009.jpg' %}" alt=""></a>
-            <div class="card-body">              
-              <h6 class="card-text text-center">Pattern No.: D009</h6>
-            </div>  
-          </div>        
+            <div class="card ">                 
+                <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D009.jpg' %}" alt=""></a>
+                <div class="card-body">                            
+                    <h6 class="card-text text-center">Pattern No.: D009</h6>
+                </div>    
+            </div>                
         </div>
         <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item"> 
-          <div class="card ">         
-            <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D010.jpg' %}" alt=""></a>
-            <div class="card-body">              
-              <h6 class="card-text text-center">Pattern No.: D010</h6>
-            </div>  
-          </div>        
+            <div class="card ">                 
+                <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D010.jpg' %}" alt=""></a>
+                <div class="card-body">                            
+                    <h6 class="card-text text-center">Pattern No.: D010</h6>
+                </div>    
+            </div>                
         </div>
         <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item"> 
-          <div class="card ">         
-            <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D011.jpg' %}" alt=""></a>
-            <div class="card-body">              
-              <h6 class="card-text text-center">Pattern No.: D011</h6>
-            </div>  
-          </div>        
+            <div class="card ">                 
+                <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D011.jpg' %}" alt=""></a>
+                <div class="card-body">                            
+                    <h6 class="card-text text-center">Pattern No.: D011</h6>
+                </div>    
+            </div>                
         </div>
         <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item"> 
-          <div class="card ">         
-            <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D012.jpg' %}" alt=""></a>
-            <div class="card-body">              
-              <h6 class="card-text text-center">Pattern No.: D012</h6>
-            </div>  
-          </div>        
+            <div class="card ">                 
+                <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D012.jpg' %}" alt=""></a>
+                <div class="card-body">                            
+                    <h6 class="card-text text-center">Pattern No.: D012</h6>
+                </div>    
+            </div>                
         </div>
-      </div>
-      <!-- /.row -->
+    </div>
+    <!-- /.row -->
 
-    <!-- Project Four -->      
-      <div class="row">
+<!-- Project Four -->            
+    <div class="row">
         <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item"> 
-          <div class="card ">         
-            <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D013.jpg' %}" alt=""></a>
-            <div class="card-body">              
-              <h6 class="card-text text-center">Pattern No.: D013</h6>
-            </div>  
-          </div>        
+            <div class="card ">                 
+                <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D013.jpg' %}" alt=""></a>
+                <div class="card-body">                            
+                    <h6 class="card-text text-center">Pattern No.: D013</h6>
+                </div>    
+            </div>                
         </div>
         <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item"> 
-          <div class="card ">         
-            <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D014.jpg' %}" alt=""></a>
-            <div class="card-body">              
-              <h6 class="card-text text-center">Pattern No.: D014</h6>
-            </div>  
-          </div>        
+            <div class="card ">                 
+                <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D014.jpg' %}" alt=""></a>
+                <div class="card-body">                            
+                    <h6 class="card-text text-center">Pattern No.: D014</h6>
+                </div>    
+            </div>                
         </div>
         <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item"> 
-          <div class="card ">         
-            <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D015.jpg' %}" alt=""></a>
-            <div class="card-body">              
-              <h6 class="card-text text-center">Pattern No.: D015</h6>
-            </div>  
-          </div>        
+            <div class="card ">                 
+                <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D015.jpg' %}" alt=""></a>
+                <div class="card-body">                            
+                    <h6 class="card-text text-center">Pattern No.: D015</h6>
+                </div>    
+            </div>                
         </div>
         <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item"> 
-          <div class="card ">         
-            <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D016.jpg' %}" alt=""></a>
-            <div class="card-body">              
-              <h6 class="card-text text-center">Pattern No.: D016</h6>
-            </div>  
-          </div>        
+            <div class="card ">                 
+                <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D016.jpg' %}" alt=""></a>
+                <div class="card-body">                            
+                    <h6 class="card-text text-center">Pattern No.: D016</h6>
+                </div>    
+            </div>                
         </div>
-      </div> 
-      
-      <!-- /.row -->
-
-      <!-- Project Five -->      
-      <div class="row">
-        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item"> 
-          <div class="card ">         
-            <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D017.jpg' %}" alt=""></a>
-            <div class="card-body">              
-              <h6 class="card-text text-center">Pattern No.: D017</h6>
-            </div>  
-          </div>        
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item"> 
-          <div class="card ">         
-            <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D018.jpg' %}" alt=""></a>
-            <div class="card-body">              
-              <h6 class="card-text text-center">Pattern No.: D018</h6>
-            </div>  
-          </div>        
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item"> 
-          <div class="card ">         
-            <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D019.jpg' %}" alt=""></a>
-            <div class="card-body">              
-              <h6 class="card-text text-center">Pattern No.: D019</h6>
-            </div>  
-          </div>        
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item"> 
-          <div class="card ">         
-            <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D020.jpg' %}" alt=""></a>
-            <div class="card-body">              
-              <h6 class="card-text text-center">Pattern No.: D020</h6>
-            </div>  
-          </div>        
-        </div>
-      </div>
-      <!-- /.row -->
-
-      <!-- Project Six -->      
-      <div class="row">
-        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item"> 
-          <div class="card ">         
-            <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D021.jpg' %}" alt=""></a>
-            <div class="card-body">              
-              <h6 class="card-text text-center">Pattern No.: D021</h6>
-            </div>  
-          </div>        
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item"> 
-          <div class="card ">         
-            <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D022.jpg' %}" alt=""></a>
-            <div class="card-body">              
-              <h6 class="card-text text-center">Pattern No.: D022</h6>
-            </div>  
-          </div>        
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item"> 
-          <div class="card ">         
-            <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D023.jpg' %}" alt=""></a>
-            <div class="card-body">              
-              <h6 class="card-text text-center">Pattern No.: D023</h6>
-            </div>  
-          </div>        
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item"> 
-          <div class="card ">         
-            <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D024.jpg' %}" alt=""></a>
-            <div class="card-body">              
-              <h6 class="card-text text-center">Pattern No.: D024</h6>
-            </div>  
-          </div>        
-        </div>
-      </div>
-      <!-- /.row -->
-
-
-
-      
-      <!-- Pagination -->
-      <ul class="pagination justify-content-center">
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-            <span class="sr-only">Previous</span>
-          </a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#">1</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="/vinyl_woven_placemat/regular_pattern_2">2</a>
-        </li>  
-        <li class="page-item">
-          <a class="page-link" href="/vinyl_woven_placemat/regular_pattern_3">3</a>
-        </li>       
-        <li class="page-item">
-          <a class="page-link" href="/vinyl_woven_placemat/regular_pattern_2" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-            <span>Next</span>
-          </a>
-        </li>
-      </ul>
     </div> 
     
-    <!-- /.container -->
+    <!-- /.row -->
 
-    <!-- Footer -->
-    <footer class="py-3 bg-dark">
-      <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; 2004-2018 HUIJIA Corporation, all Rights reserved
-          <a class="link" style='color:white' href="http://www.miitbeian.gov.cn/" target="_blank"> 浙ICP备18033823号</a> 
-        </p>
-        <p class="m-0 text-center text-white">
-          Add:No.128, Zhengzhong road, Xinqiao, Luqiao,Taizhou City, Zhejiang Province, China,318055                  E-mail: info@huijia-cn.com         
-        </p>        
-      </div>
-      <!-- /.container -->
-    </footer>
+    <!-- Project Five -->            
+    <div class="row">
+        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item"> 
+            <div class="card ">                 
+                <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D017.jpg' %}" alt=""></a>
+                <div class="card-body">                            
+                    <h6 class="card-text text-center">Pattern No.: D017</h6>
+                </div>    
+            </div>                
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item"> 
+            <div class="card ">                 
+                <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D018.jpg' %}" alt=""></a>
+                <div class="card-body">                            
+                    <h6 class="card-text text-center">Pattern No.: D018</h6>
+                </div>    
+            </div>                
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item"> 
+            <div class="card ">                 
+                <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D019.jpg' %}" alt=""></a>
+                <div class="card-body">                            
+                    <h6 class="card-text text-center">Pattern No.: D019</h6>
+                </div>    
+            </div>                
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item"> 
+            <div class="card ">                 
+                <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D020.jpg' %}" alt=""></a>
+                <div class="card-body">                            
+                    <h6 class="card-text text-center">Pattern No.: D020</h6>
+                </div>    
+            </div>                
+        </div>
+    </div>
+    <!-- /.row -->
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="{% static 'website/vendor/jquery/jquery.min.js' %}"></script>
-    <script src="{% static 'website/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>  
+    <!-- Project Six -->            
+    <div class="row">
+        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item"> 
+            <div class="card ">                 
+                <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D021.jpg' %}" alt=""></a>
+                <div class="card-body">                            
+                    <h6 class="card-text text-center">Pattern No.: D021</h6>
+                </div>    
+            </div>                
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item"> 
+            <div class="card ">                 
+                <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D022.jpg' %}" alt=""></a>
+                <div class="card-body">                            
+                    <h6 class="card-text text-center">Pattern No.: D022</h6>
+                </div>    
+            </div>                
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item"> 
+            <div class="card ">                 
+                <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D023.jpg' %}" alt=""></a>
+                <div class="card-body">                            
+                    <h6 class="card-text text-center">Pattern No.: D023</h6>
+                </div>    
+            </div>                
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item"> 
+            <div class="card ">                 
+                <a href="#"><img class="card-img-top" src="{% static 'website/img/placemat/regular pattern/D024.jpg' %}" alt=""></a>
+                <div class="card-body">                            
+                    <h6 class="card-text text-center">Pattern No.: D024</h6>
+                </div>    
+            </div>                
+        </div>
+    </div>
+    <!-- /.row -->
 
-  </body>
+{% endblock %}
 
-</html>
+{% block pagination %}
+            
+    <!-- Pagination -->
+    <ul class="pagination justify-content-center">
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+            </a>
+        </li>
+        <li class="page-item active">
+            <a class="page-link" href="#">1</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="/vinyl_woven_placemat/regular_pattern_2">2</a>
+        </li>    
+        <li class="page-item">
+            <a class="page-link" href="/vinyl_woven_placemat/regular_pattern_3">3</a>
+        </li>             
+        <li class="page-item">
+            <a class="page-link" href="/vinyl_woven_placemat/regular_pattern_2" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                <span>Next</span>
+            </a>
+        </li>
+    </ul>
+
+{% endblock %}

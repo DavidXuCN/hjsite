@@ -1,0 +1,56 @@
+{% extends 'base_blog.html' %}
+
+{% block title %} 
+  Huijia I & E Co.,Ltd. | Personal Data
+{% endblock %}
+
+{% block Heading/Breadcrumbs %} 
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">Personal Data</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        </li>        
+        <li class="breadcrumb-item "> Personal Data </li>
+    </ol>
+{% endblock %}
+
+{% block content %} 
+    <div class="media mt-4 mb-4">
+        <div>
+            <img class="d-flex mr-5 rounded-circle ml-3" src="http://placehold.it/100x100" alt="">
+            <p class="mt-2"><a href="#">Modify the picture</a></p>
+        </div>
+        <div class="media-body ml-2">
+            {% if user.is_authenticated %}
+                <h2> {{ user.username }} </h2>
+                <ul class="list-unstyled mb-0">
+                    <li>Nick name: {{ user.get_nickname }} <a href="{% url 'change_nickname' %}?from={{ request.get_full_path }}">Modify the Nickname</a></li>
+                    <li>E-mail: {% if user.email %}{{ user.email }}{% else %}not bound E-mail <a href="{% url 'bind_email' %}?from={{ request.get_full_path }}">Binding your E-mail</a>{% endif %}</li>
+                    <li>Register time: {{ user.date_joined | date:"Y/m/d  H:i:s" }}</li>
+                    <li>Last login time: {{user.last_login | date:"Y/m/d  H:i:s" }} </li>
+                    <li><a href="{% url 'change_password' %}">Modify the Password</a></li>
+                </ul>
+            {% else %}
+                <h2>Exit, Jump to homepage ... <span class="text-primary" id="remainSeconds"><strong>5</strong></span></h2>
+                <script type="text/javascript">
+                    setInterval(jump,1000);
+                    var sec = 5;
+                    function jump(){
+                        sec--;
+                        if(sec > 0){
+                            document.getElementById('remainSeconds').innerHTML = sec;
+                            
+                        }else{
+                            window.location.href = '/';
+                        }
+                    }
+                </script>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block bottom %} fixed-bottom {% endblock %}
+
