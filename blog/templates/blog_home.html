@@ -111,7 +111,7 @@
                             </div>                                                                 
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="blog_list">Blog</a>  
+                            <a class="nav-link active" href="blog_list">Interact area</a>  
                         </li>                        
                         <li class="nav-item">
                             <a class="nav-link" href="contact">Contact</a>
@@ -130,8 +130,15 @@
                                 <a class="nav-link" href="{% url 'register' %}?from={{ request.get_full_path }}">Register</a>
                             </li>
                         {% else %}
-                            <li class="dropdown nav-item">                            
-                                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ user.username }}<span class="caret"></span></a>
+                            <li class="dropdown nav-item">
+                                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {% if user.has_nickname %}
+                                        {{ user.username }}({{ user.get_nickname }})
+                                    {% else %}
+                                        {{ user.username }}
+                                    {% endif %}
+                                    <span class="caret"></span>
+                                </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProductCategory1">
                                     <a class="dropdown-item" href="{% url 'user_info' %}">Personal Data</a>
                                     <a class="dropdown-item" href="{% url 'change_password' %}">Modify the Password</a>
