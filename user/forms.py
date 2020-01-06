@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib import auth
 from django.contrib.auth.models import User
+from .models import OAuthRelationship
 
 
 class LoginForm(forms.Form):
@@ -44,7 +45,7 @@ class RegForm(forms.Form):
         label='Verification code',
         required=False,
         widget=forms.TextInput(
-            attrs={'class':'form-control', 'placeholder':'Click "send verification code" to your E-mail'}
+            attrs={'class':'form-control', 'placeholder':'Click "send code" to your E-mail'}
         )
     )
     password = forms.CharField(
@@ -232,7 +233,7 @@ class ForgotPasswordForm(forms.Form):
         label='verification code',
         required=False,
         widget=forms.TextInput(
-            attrs={'class':'form-control', 'placeholder':'Click "send verification code" to your E-mail'}
+            attrs={'class':'form-control', 'placeholder':'Click "send code" to your E-mail'}
         )
     )
     new_password = forms.CharField(
@@ -265,3 +266,30 @@ class ForgotPasswordForm(forms.Form):
             raise forms.ValidationError('Verification code is incorrect.')
 
         return verification_code
+
+class BindQQForm(forms.Form):
+    username_or_email = forms.CharField(
+        label='User name or E-mail',
+        widget=forms.TextInput(attrs={'class':'form-control'})
+    )
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control'}))
+
+    def clean(self):
+        username_or_email = self.cleaned_data['username_or_email']
+        password = self.cleaned_data['password']
+
+        user = auth.authenticate(username=username_or_email, password=password)
+        if user is None:
+            if User.objects.filter(email=username_or_email).exists():
+                username = User.objects.get(email=username_or_email).username
+                user = auth.authenticate(username=username, password=password)
+                if not user is None:
+                    self.cleaned_data['user'] = user
+                    return self.cleaned_data            
+            raise forms.ValidationError('Incorrect username or password')
+        else:
+            self.cleaned_data['user'] = user
+            
+        if OAuthRelationship.objects.filter(user=user, oauth_type=0).exists():
+            raise forms.ValidationError('The user has been bound a QQ account')
+        return self.cleaned_data

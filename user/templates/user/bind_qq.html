@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Huijia I & E Co.,Ltd. | Register</title>
+    <title>Huijia I & E Co.,Ltd. | Bind User</title>
 
     <!-- Custom fonts for this template-->
     <link href="{% static 'admin/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
@@ -27,31 +27,27 @@
 
     <div class="container">
         <div class="card card-login mx-auto mt-5">
-            <div class="card-header">Register</div>
+            <div class="mt-3" style="margin: 0 auto; text-align:center;">
+                <img src="{{ avatar }}">
+                <p class="mt-2">Hi, {{ nickname }}<p>
+            </div>
+            <div class="card-header">Bind User</div>
                 {% if not user.is_authenticated %}
+                    
                     <div class="card-body">
                         <form action="" method="POST">
                             {% csrf_token %}
-                            {% for field in reg_form %}
+                            {% for field in bind_qq_form %}
                                 <div class="form-group">
                                     <!-- <div class="form-label-group"> -->
                                     <label for="{{ field.id_for_lable }}">{{ field.label }}</label>
-                                    {% if field.id_for_label == 'id_email' %}
-                                        <div class="input-group">
-                                            {{ field }}
-                                            <span class="input-group-btn">
-                                                <button id="send_code" class="btn btn-warning ml-1">Send code</button>
-                                            </span>
-                                        </div>
-                                    {% else %}
-                                        {{ field }}
-                                    {% endif %}
+                                    {{ field }}
                                     <p class="text-danger">{{ field.errors.as_text }}</p>
                                     <!-- </div> -->
                                 </div>
                             {% endfor %}
-                            <span id="tip" class="text-danger">{{ reg_form.non_field_errors }}</span>
-                            <div class="clearfix"></div>
+                            <span id="tip" class="text-danger">{{ bind_qq_form.non_field_errors }}</span>
+
                             <!-- <div class="form-group">
                                 <div class="form-label-group">
                                     <input type="text" id="inputUsername" class="form-control" placeholder="User name" required="required" autofocus="autofocus">
@@ -64,6 +60,9 @@
                                     <label for="inputPassword">Password</label>
                                 </div>
                             </div> -->
+                            <div class="mb-2">
+                                <a class="text-center d-block small mt-3" href="{% url 'create_user_by_qq' %}?nickname={{ nickname }}"><strong>No account ? Login directly and create a new acount &gt;&gt;</strong></a>
+                            </div>
                             <div class="form-group mb-0">
                                 <div class="checkbox">
                                     <label>
@@ -72,24 +71,9 @@
                                     </label>
                                 </div>
                             </div>
-                            <a href="{% get_login_qq_url %}">
-                                <img src="{% static 'user/qq.png' %}">
-                                QQ Account Login
-                            </a>
-                            <!-- <button id="send_code" class="btn btn-warning float-left mb-2">Send verification code</button> -->
-                            <input type="submit" class="btn btn-primary btn-block mt-2" value="Register">
+                            <input type="submit" class="btn btn-primary btn-block mt-2" value="Bind">
                             <!-- <a class="btn btn-primary btn-block" href="index.html">Login</a> -->
                         </form>
-                    <div class="text-center">
-                        {% if request.GET.from %}
-                            <a class="d-block small mt-3" href="{% url 'login' %}?from={{ request.GET.from }}">Login an Account &gt;&gt;</a>
-                        {% else %}
-                            <a class="d-block small mt-3" href="{% url 'login' %}?from={{ request.get_full_path }}">Login an Account &gt;&gt;</a>
-                        {% endif %}
-                        
-                        <!-- <a class="d-block small mt-3" href="{% url 'login' %}?from={{ request.get_full_path }}">Login an Account &gt;&gt;</a> -->
-                        <a class="d-block small" href="{% url 'forgot_password' %}">Forgot Password ? &gt;&gt;</a>
-                    </div>
                 {% else %}
                     <h2>Logged in, Jump to homepage ... <span class="text-primary" id="remainSeconds"><strong>5</strong></span></h2>
                     <script type="text/javascript">
@@ -113,51 +97,9 @@
     <!-- Bootstrap core JavaScript-->
     <!-- <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
-    <script src="{% static 'website/vendor/jquery/jquery.min.js' %}"></script>
+
     <!-- Core plugin JavaScript-->
     <!-- <script src="vendor/jquery-easing/jquery.easing.min.js"></script> -->
-    <script type="text/javascript">
-        $("#send_code").click(function(){
-            var email = $("#id_email").val();
-            if(email==""){
-                $("#tip").text('* E-mail can not be empty.');
-                return false;
-            }
-
-            // 发送验证码
-            $.ajax({
-                url: "{% url 'send_verification_code' %}",
-                type: "GET",
-                data: {
-                    'email': email,
-                    'send_for':'register_code'
-                },
-                cache: false,
-                success: function(data){
-                    if(data['status']=='ERROR'){
-                        alert(data['status']);
-                    }
-                }
-            });
-
-            // 把按钮变灰
-            $(this).addClass('disabled');
-            $(this).attr('disabled', true);
-            var time = 30;
-            $(this).text(time + 's');
-            var interval = setInterval(() => {
-                if(time <=0){
-                    clearInterval(interval);
-                    $(this).removeClass('disabled');
-                    $(this).attr('disabled', false);
-                    $(this).text('Send verication code');
-                    return false;    
-                }
-                time --;
-                $(this).text(time + 's');
-            }, 1000);
-        });
-    </script>
 
 </body>
 

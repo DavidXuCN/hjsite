@@ -34,16 +34,15 @@
                                 <div class="form-group">
                                     {% if not field.is_hidden %}
                                         <label for="{{ field.id_for_lable }}">{{ field.label }}</label>
-                                    {% endif %}                               
-                                    {{ field }}
+                                    {% endif %}
+
+                                    {% block other_button %}{% endblock %}
+
                                     <p class="text-danger">{{ field.errors.as_text }}</p>
                                 </div>
                             {% endfor %}
                             <span id="tip" class="text-danger">{{ form.non_field_errors }}</span>
                             <div class="clearfix"></div>
-                            <div class="float-left mb-2">
-                                {% block other_button %}{% endblock %}    
-                            </div>
                             <input type="submit" class="btn btn-primary btn-block" value="{{ submit_text }}">
                             <button class="btn btn-success btn-block" onclick="window.location.href='{{ return_back_url }}'">Return</button>
                         </form>

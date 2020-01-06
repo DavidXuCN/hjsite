@@ -150,3 +150,10 @@ CACHES = {
         'LOCATION': 'my_cache_table',
     }
 }
+
+# QQ登录配置
+QQ_APP_ID = '101734313'
+QQ_APP_KEY = os.environ['QQ_APP_KEY']
+QQ_REDIRECT_URL = 'http://huijia-cn.com/user/login_by_qq'
+QQ_STATE = 'hjiewz'
+ 

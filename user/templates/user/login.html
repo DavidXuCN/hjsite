@@ -41,7 +41,7 @@
                                     <!-- </div> -->
                                 </div>
                             {% endfor %}
-                            <span class="text-danger">{{ login_form.non_field_errors }}</span>
+                            <span id="tip" class="text-danger">{{ login_form.non_field_errors }}</span>
 
                             <!-- <div class="form-group">
                                 <div class="form-label-group">
@@ -71,8 +71,13 @@
                             <!-- <a class="btn btn-primary btn-block" href="index.html">Login</a> -->
                         </form>
                     <div class="text-center">
-                        <a class="d-block small mt-3" href="{% url 'register' %}?from={{ request.get_full_path }}">Register an Account</a>
-                        <a class="d-block small" href="{% url 'forgot_password' %}">Forgot Password?</a>
+                        {% if request.GET.from %}
+                            <a class="d-block small mt-3" href="{% url 'register' %}?from={{ request.GET.from }}">Register an Account &gt;&gt;</a>
+                        {% else %}
+                            <a class="d-block small mt-3" href="{% url 'register' %}?from={{ request.get_full_path }}">Register an Account &gt;&gt;</a>
+                        {% endif %}
+                        <!-- <a class="d-block small mt-3" href="{% url 'register' %}?from={{ request.get_full_path }}">Register an Account &gt;&gt;</a> -->
+                        <a class="d-block small" href="{% url 'forgot_password' %}">Forgot Password? &gt;&gt;</a>
                     </div>
                 {% else %}
                     <h2>Logged in, Jump to homepage ... <span class="text-primary" id="remainSeconds"><strong>5</strong></span></h2>
