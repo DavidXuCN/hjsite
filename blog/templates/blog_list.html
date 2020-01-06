@@ -40,7 +40,7 @@
                     <!-- <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">    -->     
                     <div class="card-body">                                                    
                         <h2 class="card-title">{{ blog.title }}</h2>                            
-                        <p class="card-text">{{ blog.content | striptags | truncatechars_html:200 }}</p>
+                        <p class="card-text">{{ blog.content | safe | striptags | truncatechars_html:200 }}</p>
                         <!-- <p class="card-text">{{ blog.content | safe | truncatechars_html:200 }}</p> -->
                         <div class="text-right">
                             <a href="{% url 'blog_detail' blog.pk %}" class="btn btn-primary bg-info ">Read More &rarr;</a>
