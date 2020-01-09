@@ -114,7 +114,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media').replace('\\', '/')
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_collected')
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static').replace('\\', '/'),
+    os.path.join(os.path.join(BASE_DIR, 'static').replace('\\', '/')),
+    #os.path.join(BASE_DIR, 'static').replace('\\', '/'),
 ]
 
 # 配置ckeditor
