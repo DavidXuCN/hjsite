@@ -1,0 +1,38 @@
+{% extends 'base_blog.html' %}
+{% load static %}
+
+{% block title %} 
+    Blog | My Notifications  
+{% endblock %}
+
+{% block Heading/Breadcrumbs %} 
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">My message</h1>
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a href="{% url 'blog_home' %}">Blog Home</a>
+        </li>
+        <li class="breadcrumb-item active">My message</li>
+    </ol>     
+{% endblock %} 
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-10">
+            <a class="btn btn-primary" href="{% url 'notifications:mark_all_as_read' %}?next={% url 'my_notifications' %}">Mark all notifications as read</a>
+            <a class="btn btn-warning" href="{% url 'delete_my_read_notifications' %}">Delete all read notifications</a>
+            <ul class="list-unstyled mt-3">
+                {% for notification in request.user.notifications.all %}
+                    <li class="{% if not notification.unread %}text-gray{% endif %}">[ {{ notification.timesince }} ago ] 
+                    <a href="{% url 'my_notification' notification.pk %}">{{ notification.verb }}</a></li>
+                {% empty %}
+                    <li>No message !</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}

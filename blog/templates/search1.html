@@ -1,0 +1,90 @@
+{% extends 'base_blog.html' %}
+{% load static %}
+
+{% block title %} 
+    Blog | Search
+{% endblock %}
+
+{% load comment_tags %}
+{% load likes_tags %}
+
+{% block Heading/Breadcrumbs %} 
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">Search</h1>
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a href="blog_home">Blog Home</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a href="blog_list">Blog List</a>
+        </li>
+        <li class="breadcrumb-item active">Search</li>
+    </ol>     
+{% endblock %} 
+
+{% block content %} 
+    <div class="row">
+        <div class="col-md-8">
+            <div>
+                {% if search_word == '' %}
+                    <h3>You haven't searched any content.</h3>
+                    <p>You can try to search something, such as: Blog</p>
+                {% else %}
+                    <h3>Searched "{{ search_word }}", found out {{ search_blogs_count }} result(s).</h3>
+                    <hr>
+                    {% for blog in page_of_blogs %}
+                        <a href="{% url 'blog_detail' blog.pk %}">
+                            <h4>{{ blog.title }}</h4>
+                        </a>
+                        <p style="width:;word-break: break-all;">{{ blog.content | safe | striptags | truncatechars_html:100 }}</p>                
+                    {% empty %}
+                        <p>Nothing can be searched, try to another keyword again.</p>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="row justify-content-center mt-4 mb-4">
+                {% if page_of_blogs.has_previous %}
+                    <a class="btn btn-primary" 
+                        href="{% url 'search' %}?wd={{ search_word }}&page={{ page_of_blogs.previous_page_number }}">
+                        &lt;&lt; Previous page
+                    </a>
+                {% endif %}
+
+                {% if page_of_blogs.has_next %}
+                    <a class="btn btn-primary" 
+                        href="{% url 'search' %}?wd={{ search_word }}&page={{ page_of_blogs.next_page_number }}">
+                        Next page &gt;&gt;
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+
+    {% block sidebar_widgets_column %}
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
+
+            <!-- Search Widget -->
+            <div class="card mb-4">
+                <h5 class="card-header">Search</h5>
+                <div class="card-body">
+                    <form action="{% url 'search' %}">
+                        <div class="input-group">
+                            <input type="text" name="wd" class="form-control" placeholder="Search for...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-secondary" type="submit">Go!</button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+{% endblock %}
+
+
+
+{% block bottom %}fixed-bottom{% endblock %}

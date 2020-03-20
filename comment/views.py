@@ -49,10 +49,7 @@ def update_comment(request):
             comment.root = parent.root if not parent.root is None else parent
             comment.parent = parent
             comment.reply_to = parent.user
-        comment.save()
-
-        # 发送邮件通知
-        comment.send_mail()
+        comment.save()       
 
         # 返回数据
         data['status'] = 'SUCCESS'

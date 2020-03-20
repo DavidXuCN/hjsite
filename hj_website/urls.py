@@ -14,12 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import include, path
 
 # 对于显示静态文件非常重要
 from django.conf import settings
 from django.conf.urls.static import static
-
+from . import views
 # import os
 # from django.views.generic.base import RedirectView
 
@@ -33,6 +33,8 @@ urlpatterns = [
     path('comment/', include('comment.urls')),
     path('likes/', include('likes.urls')),
     path('user/', include('user.urls')),
+    path('notifications/', include('notifications.urls', namespace='notifications')),
+    path('my_notifications/', include('my_notifications.urls')),
     # path('favicon.ico',RedirectView.as_view(url='/static/website/img/favicon.ico')),  
 ]
 # +static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

@@ -34,6 +34,8 @@ INSTALLED_APPS = [
     'comment',
     'likes',
     'user',
+    'notifications',
+    'my_notifications'
 ]
 
 MIDDLEWARE = [
@@ -94,7 +96,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'zh-hans'
+LANGUAGE_CODE = 'En'
 
 TIME_ZONE = 'Asia/Shanghai'
 
@@ -156,4 +158,9 @@ QQ_APP_ID = '101734313'
 QQ_APP_KEY = os.environ['QQ_APP_KEY']
 QQ_REDIRECT_URL = 'http://huijia-cn.com/user/login_by_qq'
 QQ_STATE = 'hjiewz'
+
+# Django-notifications-hq设置
+DJANGO_NOTIFICATIONS_CONFIG = { 
+    'USE_JSONFIELD': True
+}
  

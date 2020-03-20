@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 {% load static %}
+{% load notifications_tags %}
 
     <head>        
         <meta charset="utf-8">
@@ -169,9 +170,11 @@
                                 {% endif %}
                             </li>
                         {% else %}
+                            {% notifications_unread as unread_count %}
                             <li class="dropdown nav-item">                            
                                 <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    {{ user.get_nickname_or_username }}
+                                    Hi, {{ user.get_nickname_or_username }}
+                                    <span class="badge badge-pill badge-danger live_notify_badge">{% if unread_count > 0 %}{{ unread_count }}{% endif %}</span>
                                     <!-- {% if user.has_nickname %}
                                         {{ user.username }}({{ user.get_nickname }})
                                     {% else %}
@@ -181,7 +184,7 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProductCategory1">
                                     <a class="dropdown-item" href="{% url 'user_info' %}">Personal Data</a>
-                                    <a class="dropdown-item" href="{% url 'change_password' %}">Modify the Password</a>
+                                    <a class="dropdown-item" href="{% url 'my_notifications' %}">My message <span class="badge badge-pill badge-danger live_notify_badge">{% if unread_count > 0 %}{{ unread_count }}{% endif %}</span></a>
                                     {% if user.is_staff or user.is_superuser %}
                                         <a class="dropdown-item" href="{% url 'admin:index' %}">back-stage management</a>
                                     {% endif %}    
@@ -219,8 +222,21 @@
 
         <!-- Bootstrap core JavaScript -->
         <script src="{% static 'website/vendor/jquery/jquery.min.js' %}"></script>
-        <script src="{% static 'website/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>        
+        <script src="{% static 'website/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+        <script  type="text/javascript" src="{% static 'notifications/notify.js' %}"></script>        
+        <script type="text/javascript">
+            //自定义实时获取未读消息
+            function my_special_notification_callback(data){
+                unread_count = data['unread_count'];
+                if (unread_count == 0) {
+                    unread_count = '';
+                }
+                $('.live_notify_badge').text(unread_count);
+                   
+            }
 
+        </script>
+        {% register_notify_callbacks callbacks='my_special_notification_callback' %}
     </body>
 
 </html>
