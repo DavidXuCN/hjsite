@@ -54,6 +54,7 @@ urlpatterns = [
     path('plastic_extrusion_machinery/squeeze_film_line_equipment', views.squeeze_film_line_equipment, name = 'website_squeeze_film_line_equipment'),
     #中文版
 	path('indexcn', views.indexcn, name = 'websitecn_indexcn'),
+    path('app_guide_page', views.app_guide_page, name = 'websitecn_app_guide_page'),
 ]
     
 	

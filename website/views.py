@@ -167,3 +167,6 @@ def squeeze_film_line_equipment(request):
 
 def indexcn(request):
 	return render(request, 'websitecn/indexcn.html') 
+
+def app_guide_page(request):
+	return render(request, 'websitecn/app_guide_page.html')
